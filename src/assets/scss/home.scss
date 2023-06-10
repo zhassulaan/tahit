@@ -1,0 +1,11 @@
+@import "./functions.scss";
+@import "./media.scss";
+
+.caption {
+  width: 100%;
+  max-width: rem(555);
+}
+
+* {
+  font-size: rem(18);
+}

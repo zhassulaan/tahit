@@ -1,0 +1,1366 @@
+{
+    "collection": {
+        "info": {
+            "_postman_id": "3c7768e4-5f9b-4393-8457-6f1fe5b2a7e2",
+            "name": "tahit",
+            "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+            "updatedAt": "2023-01-09T05:53:21.000Z"
+        },
+        "item": [{
+            "name": "регистрация, аутентификация",
+            "item": [{
+                "name": "user register",
+                "id": "9d92429f-132e-496c-adde-51185d271324",
+                "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                },
+                "request": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                        "mode": "formdata",
+                        "formdata": [{
+                            "key": "group",
+                            "value": "Текстильный декоратор",
+                            "description": "имя группы пользователей: Графический дизайнер, Розничные покупатели, Салон штор, Текстильный декоратор",
+                            "type": "text"
+                        }, {
+                            "key": "username",
+                            "value": "some_textile_decorator",
+                            "description": "username",
+                            "type": "text"
+                        }, {
+                            "key": "password",
+                            "value": "alternate",
+                            "description": "пароль",
+                            "type": "text"
+                        }, {
+                            "key": "country",
+                            "value": "Казахстан",
+                            "description": "страна",
+                            "type": "text"
+                        }, {
+                            "key": "phone_number",
+                            "value": "+77771234567",
+                            "description": "номер телефона",
+                            "type": "text"
+                        }, {
+                            "key": "city",
+                            "value": "Алматы",
+                            "description": "город в стране",
+                            "type": "text"
+                        }, {
+                            "key": "design_studio_name",
+                            "value": "some_designstudio_name",
+                            "description": "название дизайнерской студии, если group=\"Графический дизайнер\"",
+                            "type": "text",
+                            "disabled": true
+                        }, {
+                            "key": "saloon_name",
+                            "value": "some_saloon_name",
+                            "description": "название салона штор, если group=\"Салон штор\"",
+                            "type": "text",
+                            "disabled": true
+                        }]
+                    },
+                    "url": {
+                        "raw": "{{baseUrl}}users/register/",
+                        "host": ["{{baseUrl}}users"],
+                        "path": ["register", ""]
+                    }
+                },
+                "response": []
+            }, {
+                "name": "get token by username and password",
+                "id": "1178f3b7-750c-41ca-a8d7-1d593128dcec",
+                "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                },
+                "request": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                        "mode": "formdata",
+                        "formdata": [{
+                            "key": "username",
+                            "value": "admin2",
+                            "type": "text"
+                        }, {
+                            "key": "password",
+                            "value": "alternate",
+                            "type": "text"
+                        }]
+                    },
+                    "url": {
+                        "raw": "{{baseUrl}}users/users/get_token_by_username_and_password/",
+                        "host": ["{{baseUrl}}users"],
+                        "path": ["users", "get_token_by_username_and_password", ""]
+                    }
+                },
+                "response": []
+            }],
+            "id": "451d559d-8dda-4fcc-bfa3-798549e79386"
+        }, {
+            "name": "личный кабинет",
+            "item": [{
+                "name": "add phone number for current user",
+                "id": "efd7c57b-037b-47fc-b72f-378635eac0f8",
+                "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                },
+                "request": {
+                    "method": "POST",
+                    "header": [{
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text"
+                    }],
+                    "body": {
+                        "mode": "formdata",
+                        "formdata": [{
+                            "key": "phone_number",
+                            "value": "+77071234567",
+                            "description": "номер телефона",
+                            "type": "text"
+                        }]
+                    },
+                    "url": {
+                        "raw": "{{baseUrl}}users/add_phone_number/",
+                        "host": ["{{baseUrl}}users"],
+                        "path": ["add_phone_number", ""]
+                    }
+                },
+                "response": []
+            }, {
+                "name": "edit profile partially for current user",
+                "id": "692172c1-e9f7-4b4b-ac39-75a7447745d2",
+                "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                },
+                "request": {
+                    "method": "PATCH",
+                    "header": [{
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text"
+                    }],
+                    "body": {
+                        "mode": "formdata",
+                        "formdata": [{
+                            "key": "first_name",
+                            "value": "ADMIN",
+                            "type": "text",
+                            "disabled": true
+                        }, {
+                            "key": "last_name",
+                            "value": "ADMINIC",
+                            "type": "text",
+                            "disabled": true
+                        }, {
+                            "key": "email",
+                            "value": "admin@alux.kz",
+                            "type": "text",
+                            "disabled": true
+                        }, {
+                            "key": "username",
+                            "value": "admin",
+                            "type": "text",
+                            "disabled": true
+                        }, {
+                            "key": "password",
+                            "value": "alternate",
+                            "type": "text"
+                        }]
+                    },
+                    "url": {
+                        "raw": "{{baseUrl}}users/edit_profile/",
+                        "host": ["{{baseUrl}}users"],
+                        "path": ["edit_profile", ""]
+                    }
+                },
+                "response": []
+            }, {
+                "name": "change password for current user",
+                "id": "63142847-f5cb-4999-927c-64adbb97d9e7",
+                "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                },
+                "request": {
+                    "method": "POST",
+                    "header": [{
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text"
+                    }],
+                    "body": {
+                        "mode": "formdata",
+                        "formdata": [{
+                            "key": "old_password",
+                            "value": "some_password",
+                            "type": "text",
+                            "description": "старый пароль"
+                        }, {
+                            "key": "password",
+                            "value": "some_password",
+                            "description": "новый пароль",
+                            "type": "text"
+                        }]
+                    },
+                    "url": {
+                        "raw": "{{baseUrl}}users/change_password/",
+                        "host": ["{{baseUrl}}users"],
+                        "path": ["change_password", ""]
+                    }
+                },
+                "response": []
+            }, {
+                "name": "get user addresses for current user",
+                "id": "71aea223-3497-479c-bd37-9b245da4ff84",
+                "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                },
+                "request": {
+                    "method": "GET",
+                    "header": [{
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text"
+                    }],
+                    "body": {
+                        "mode": "formdata",
+                        "formdata": []
+                    },
+                    "url": {
+                        "raw": "{{baseUrl}}users/user_addresses/",
+                        "host": ["{{baseUrl}}users"],
+                        "path": ["user_addresses", ""]
+                    }
+                },
+                "response": []
+            }, {
+                "name": "add user address for current user",
+                "id": "caae1035-363d-4783-9d18-53bb0216049b",
+                "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                },
+                "request": {
+                    "method": "POST",
+                    "header": [{
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text"
+                    }],
+                    "body": {
+                        "mode": "formdata",
+                        "formdata": [{
+                            "key": "country_name",
+                            "value": "Казахстан",
+                            "type": "text"
+                        }, {
+                            "key": "city_name",
+                            "value": "Астана",
+                            "type": "text"
+                        }, {
+                            "key": "index",
+                            "value": "0254161",
+                            "type": "text"
+                        }, {
+                            "key": "street",
+                            "value": "HANATT",
+                            "type": "text"
+                        }, {
+                            "key": "home",
+                            "value": "214",
+                            "type": "text"
+                        }]
+                    },
+                    "url": {
+                        "raw": "{{baseUrl}}users/user_addresses/",
+                        "host": ["{{baseUrl}}users"],
+                        "path": ["user_addresses", ""]
+                    }
+                },
+                "response": []
+            }, {
+                "name": "edit user address for current user",
+                "id": "9b804d75-a97b-4edd-95e7-a10ebfff92b4",
+                "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                },
+                "request": {
+                    "method": "PATCH",
+                    "header": [{
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text"
+                    }],
+                    "body": {
+                        "mode": "formdata",
+                        "formdata": [{
+                            "key": "address_id",
+                            "value": "4",
+                            "description": "id адреса",
+                            "type": "text"
+                        }, {
+                            "key": "country_name",
+                            "value": "Казахстан",
+                            "type": "text",
+                            "description": "название страны"
+                        }, {
+                            "key": "city_name",
+                            "value": "Алматы",
+                            "type": "text",
+                            "description": "название города"
+                        }, {
+                            "key": "index",
+                            "value": "050000",
+                            "type": "text",
+                            "description": "индекс"
+                        }, {
+                            "key": "street",
+                            "value": "Сейфуллина",
+                            "type": "text",
+                            "description": "название улицы"
+                        }, {
+                            "key": "home",
+                            "value": "27",
+                            "type": "text",
+                            "description": "номер дома, квартиры и тд"
+                        }]
+                    },
+                    "url": {
+                        "raw": "{{baseUrl}}users/user_addresses/",
+                        "host": ["{{baseUrl}}users"],
+                        "path": ["user_addresses", ""]
+                    }
+                },
+                "response": []
+            }, {
+                "name": "edit user address for current user Copy",
+                "id": "3ad4a0e9-c516-4dd9-9bf9-eadc07eeec40",
+                "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                },
+                "request": {
+                    "method": "DELETE",
+                    "header": [{
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text"
+                    }],
+                    "body": {
+                        "mode": "formdata",
+                        "formdata": [{
+                            "key": "address_id",
+                            "value": "4",
+                            "description": "id адреса",
+                            "type": "text"
+                        }]
+                    },
+                    "url": {
+                        "raw": "{{baseUrl}}users/user_addresses/",
+                        "host": ["{{baseUrl}}users"],
+                        "path": ["user_addresses", ""]
+                    }
+                },
+                "response": []
+            }],
+            "id": "f56fe826-6d20-45ef-b798-e9022c3f2cfa"
+        }, {
+            "name": "basises",
+            "item": [{
+                "name": "basis_images",
+                "item": [{
+                    "name": "get images for admin",
+                    "id": "4c4c3165-5209-419a-9b10-e3fe73ef900a",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "method": "GET",
+                        "header": [{
+                            "key": "Authorization",
+                            "value": "{{token}}",
+                            "type": "text"
+                        }],
+                        "url": {
+                            "raw": "{{baseUrl}}basises/images/",
+                            "host": ["{{baseUrl}}basises"],
+                            "path": ["images", ""]
+                        }
+                    },
+                    "response": []
+                }, {
+                    "name": "add image for admin",
+                    "id": "82407819-006c-4559-b095-fa8d48a95c46",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "method": "POST",
+                        "header": [{
+                            "key": "Authorization",
+                            "value": "{{token}}",
+                            "type": "text"
+                        }],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [{
+                                "key": "image",
+                                "type": "file",
+                                "src": "/C:/Users/erbat/Downloads/bg.a905df3c.png"
+                            }]
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}basises/images/",
+                            "host": ["{{baseUrl}}basises"],
+                            "path": ["images", ""]
+                        }
+                    },
+                    "response": []
+                }, {
+                    "name": "get image by id for admin",
+                    "id": "23729a1c-dbf9-4dc5-8ae8-d20c12a1315d",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "method": "GET",
+                        "header": [{
+                            "key": "Authorization",
+                            "value": "{{token}}",
+                            "type": "text"
+                        }],
+                        "url": {
+                            "raw": "{{baseUrl}}basises/images/1/",
+                            "host": ["{{baseUrl}}basises"],
+                            "path": ["images", "1", ""]
+                        }
+                    },
+                    "response": []
+                }, {
+                    "name": "edit image by id for admin",
+                    "id": "bee4d154-97b7-42e0-bc9c-8ad17cbbe254",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "method": "PUT",
+                        "header": [{
+                            "key": "Authorization",
+                            "value": "{{token}}",
+                            "type": "text"
+                        }],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [{
+                                "key": "image",
+                                "type": "file",
+                                "src": "/C:/Users/erbat/Downloads/bg.f1929ad2 (1).png"
+                            }]
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}basises/images/1/",
+                            "host": ["{{baseUrl}}basises"],
+                            "path": ["images", "1", ""]
+                        }
+                    },
+                    "response": []
+                }, {
+                    "name": "delete image by id for admin",
+                    "id": "5892f851-8d06-4d72-a127-ea23fa0d60d8",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "method": "DELETE",
+                        "header": [{
+                            "key": "Authorization",
+                            "value": "{{token}}",
+                            "type": "text"
+                        }],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [{
+                                "key": "image",
+                                "type": "file",
+                                "src": "/C:/Users/erbat/Downloads/bg.f1929ad2 (1).png"
+                            }]
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}basises/images/1/",
+                            "host": ["{{baseUrl}}basises"],
+                            "path": ["images", "1", ""]
+                        }
+                    },
+                    "response": []
+                }],
+                "id": "cf93abd7-2cdc-4f3d-ac77-7a804de894cd"
+            }, {
+                "name": "basis_costs",
+                "item": [{
+                    "name": "get costs for admin",
+                    "id": "76e454dd-1b44-496b-8c02-70666f9ca2cf",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "method": "GET",
+                        "header": [{
+                            "key": "Authorization",
+                            "value": "{{token}}",
+                            "type": "text"
+                        }],
+                        "url": {
+                            "raw": "{{baseUrl}}basises/costs/",
+                            "host": ["{{baseUrl}}basises"],
+                            "path": ["costs", ""]
+                        }
+                    },
+                    "response": []
+                }, {
+                    "name": "add cost for admin",
+                    "id": "3fd7f436-10cf-4c8b-8f97-e2403b5096bf",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "method": "POST",
+                        "header": [{
+                            "key": "Authorization",
+                            "value": "{{token}}",
+                            "type": "text"
+                        }],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [{
+                                "key": "cost",
+                                "type": "text",
+                                "value": "2500"
+                            }, {
+                                "key": "basis",
+                                "value": "1",
+                                "type": "text"
+                            }, {
+                                "key": "country",
+                                "value": "1",
+                                "type": "text"
+                            }]
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}basises/costs/",
+                            "host": ["{{baseUrl}}basises"],
+                            "path": ["costs", ""]
+                        }
+                    },
+                    "response": []
+                }, {
+                    "name": "get cost by id for admin",
+                    "id": "689904cd-f168-475d-a275-160c4bde3f19",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "method": "GET",
+                        "header": [{
+                            "key": "Authorization",
+                            "value": "{{token}}",
+                            "type": "text"
+                        }],
+                        "url": {
+                            "raw": "{{baseUrl}}basises/costs/1/",
+                            "host": ["{{baseUrl}}basises"],
+                            "path": ["costs", "1", ""]
+                        }
+                    },
+                    "response": []
+                }, {
+                    "name": "edit cost by id for admin",
+                    "id": "b666cd6f-c09c-4554-a058-2cd05cecbca8",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "method": "PUT",
+                        "header": [{
+                            "key": "Authorization",
+                            "value": "{{token}}",
+                            "type": "text"
+                        }],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [{
+                                "key": "image",
+                                "type": "file",
+                                "src": "/C:/Users/erbat/Downloads/bg.f1929ad2 (1).png"
+                            }]
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}basises/images/1/",
+                            "host": ["{{baseUrl}}basises"],
+                            "path": ["images", "1", ""]
+                        }
+                    },
+                    "response": []
+                }, {
+                    "name": "delete cost by id for admin",
+                    "id": "c44808c7-fefd-44cd-90f9-c85c1eddeffa",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "method": "DELETE",
+                        "header": [{
+                            "key": "Authorization",
+                            "value": "{{token}}",
+                            "type": "text"
+                        }],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [{
+                                "key": "image",
+                                "type": "file",
+                                "src": "/C:/Users/erbat/Downloads/bg.f1929ad2 (1).png"
+                            }]
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}basises/images/1/",
+                            "host": ["{{baseUrl}}basises"],
+                            "path": ["images", "1", ""]
+                        }
+                    },
+                    "response": []
+                }],
+                "id": "73a45f39-8aee-4711-b53b-104fd577c0cf"
+            }, {
+                "name": "get basises",
+                "id": "70889b13-8c88-428b-85a9-a7f57ce11775",
+                "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                },
+                "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                        "raw": "{{baseUrl}}basises/list/",
+                        "host": ["{{baseUrl}}basises"],
+                        "path": ["list", ""]
+                    }
+                },
+                "response": []
+            }, {
+                "name": "add basis",
+                "id": "9d95e418-baff-46ac-a63a-ab1d849878c8",
+                "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                },
+                "request": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                        "mode": "formdata",
+                        "formdata": [{
+                            "key": "name",
+                            "value": "some_name",
+                            "type": "text"
+                        }, {
+                            "key": "description",
+                            "value": "some_description",
+                            "type": "text"
+                        }, {
+                            "key": "images",
+                            "type": "text",
+                            "value": "1"
+                        }, {
+                            "key": "images",
+                            "type": "text",
+                            "value": "2"
+                        }, {
+                            "key": "template",
+                            "type": "file",
+                            "src": "/C:/Users/erbat/Downloads/len_template.jpg"
+                        }, {
+                            "key": "width",
+                            "value": "1",
+                            "type": "text"
+                        }, {
+                            "key": "measurement_unit",
+                            "value": "метр",
+                            "type": "text"
+                        }, {
+                            "key": "weight",
+                            "value": "100",
+                            "type": "text"
+                        }, {
+                            "key": "weight_unit",
+                            "value": "грамм",
+                            "type": "text"
+                        }, {
+                            "key": "length_unit",
+                            "value": "метр",
+                            "type": "text"
+                        }, {
+                            "key": "cost",
+                            "value": "1000",
+                            "type": "text"
+                        }, {
+                            "key": "is_active",
+                            "value": "1",
+                            "type": "text"
+                        }]
+                    },
+                    "url": {
+                        "raw": "{{baseUrl}}basises/create/",
+                        "host": ["{{baseUrl}}basises"],
+                        "path": ["create", ""]
+                    }
+                },
+                "response": []
+            }, {
+                "name": "get basises by id",
+                "id": "93e6aaea-c878-4696-83ab-5d05177d2ba6",
+                "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                },
+                "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                        "raw": "{{baseUrl}}basises/retrieve/1/",
+                        "host": ["{{baseUrl}}basises"],
+                        "path": ["retrieve", "1", ""]
+                    }
+                },
+                "response": []
+            }, {
+                "name": "edit basis by id",
+                "id": "2866872d-ba8e-4bb7-884d-b237cd3b210a",
+                "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                },
+                "request": {
+                    "method": "PUT",
+                    "header": [],
+                    "body": {
+                        "mode": "formdata",
+                        "formdata": [{
+                            "key": "name",
+                            "value": "some_name",
+                            "type": "text"
+                        }, {
+                            "key": "description",
+                            "value": "some_description",
+                            "type": "text"
+                        }, {
+                            "key": "images",
+                            "type": "text",
+                            "value": "1"
+                        }, {
+                            "key": "images",
+                            "type": "text",
+                            "value": "2"
+                        }, {
+                            "key": "template",
+                            "type": "file",
+                            "src": "/C:/Users/erbat/Downloads/bg.a905df3c.png"
+                        }, {
+                            "key": "width",
+                            "value": "1",
+                            "type": "text"
+                        }, {
+                            "key": "measurement_unit",
+                            "value": "метр",
+                            "type": "text"
+                        }, {
+                            "key": "weight",
+                            "value": "100",
+                            "type": "text"
+                        }, {
+                            "key": "weight_unit",
+                            "value": "грамм",
+                            "type": "text"
+                        }, {
+                            "key": "length_unit",
+                            "value": "метр",
+                            "type": "text"
+                        }, {
+                            "key": "cost",
+                            "value": "1000",
+                            "type": "text"
+                        }, {
+                            "key": "is_active",
+                            "value": "1",
+                            "type": "text"
+                        }]
+                    },
+                    "url": {
+                        "raw": "{{baseUrl}}basises/edit/1/",
+                        "host": ["{{baseUrl}}basises"],
+                        "path": ["edit", "1", ""]
+                    }
+                },
+                "response": []
+            }, {
+                "name": "partial edit basis by id",
+                "id": "d0afc731-2b1d-464f-9560-1e90d1e86ead",
+                "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                },
+                "request": {
+                    "method": "PATCH",
+                    "header": [],
+                    "body": {
+                        "mode": "formdata",
+                        "formdata": [{
+                            "key": "name",
+                            "value": "some_name",
+                            "type": "text",
+                            "disabled": true
+                        }, {
+                            "key": "description",
+                            "value": "some_description",
+                            "type": "text",
+                            "disabled": true
+                        }, {
+                            "key": "images",
+                            "type": "text",
+                            "value": "1",
+                            "disabled": true
+                        }, {
+                            "key": "images",
+                            "type": "text",
+                            "value": "2",
+                            "disabled": true
+                        }, {
+                            "key": "template",
+                            "type": "file",
+                            "src": "/C:/Users/erbat/Downloads/bg.a905df3c.png",
+                            "disabled": true
+                        }, {
+                            "key": "width",
+                            "value": "1",
+                            "type": "text",
+                            "disabled": true
+                        }, {
+                            "key": "measurement_unit",
+                            "value": "метр",
+                            "type": "text",
+                            "disabled": true
+                        }, {
+                            "key": "weight",
+                            "value": "100",
+                            "type": "text",
+                            "disabled": true
+                        }, {
+                            "key": "weight_unit",
+                            "value": "грамм",
+                            "type": "text",
+                            "disabled": true
+                        }, {
+                            "key": "length_unit",
+                            "value": "метр",
+                            "type": "text",
+                            "disabled": true
+                        }, {
+                            "key": "cost",
+                            "value": "0",
+                            "type": "text"
+                        }, {
+                            "key": "is_active",
+                            "value": "0",
+                            "type": "text"
+                        }]
+                    },
+                    "url": {
+                        "raw": "{{baseUrl}}basises/edit/1/",
+                        "host": ["{{baseUrl}}basises"],
+                        "path": ["edit", "1", ""]
+                    }
+                },
+                "response": []
+            }, {
+                "name": "delete basis by id",
+                "id": "d7d9c75c-edc0-4015-922c-c44facdd53fa",
+                "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                },
+                "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                        "raw": "{{baseUrl}}basises/edit/1/",
+                        "host": ["{{baseUrl}}basises"],
+                        "path": ["edit", "1", ""]
+                    }
+                },
+                "response": []
+            }],
+            "id": "daed3ec2-8ce4-46b4-bbbf-ae29ae06c5fb"
+        }, {
+            "name": "countries",
+            "item": [{
+                "name": "get countries with cities",
+                "id": "db12de06-d67c-4844-a2cb-96ad16eec141",
+                "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                },
+                "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                        "raw": "{{baseUrl}}countries/countries/",
+                        "host": ["{{baseUrl}}countries"],
+                        "path": ["countries", ""]
+                    }
+                },
+                "response": []
+            }],
+            "id": "d1e0e1bc-e99d-464e-af20-cae00b990b2e"
+        }, {
+            "name": "prints",
+            "item": [{
+                "name": "get active prints",
+                "id": "86dbff93-db27-4a51-b542-e08a16706621",
+                "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                },
+                "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                        "raw": "{{baseUrl}}prints/prints/?style=Современный&style=Винтажный&theme=модерн&color=синий",
+                        "host": ["{{baseUrl}}prints"],
+                        "path": ["prints", ""],
+                        "query": [{
+                            "key": "style",
+                            "value": "Современный"
+                        }, {
+                            "key": "style",
+                            "value": "Винтажный"
+                        }, {
+                            "key": "theme",
+                            "value": "модерн"
+                        }, {
+                            "key": "color",
+                            "value": "синий"
+                        }]
+                    },
+                    "description": "фильтр по параметрам: стиль, тематика, цвет.\n\nПо каждому параметру можно несколько указать!"
+                },
+                "response": []
+            }, {
+                "name": "get active print by id",
+                "id": "3cfd78e1-48c4-4aec-93fb-028c06747635",
+                "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                },
+                "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                        "raw": "{{baseUrl}}prints/prints/2/",
+                        "host": ["{{baseUrl}}prints"],
+                        "path": ["prints", "2", ""]
+                    },
+                    "description": "фильтр по параметрам: стиль, тематика, цвет.\n\nПо каждому параметру можно несколько указать!"
+                },
+                "response": []
+            }, {
+                "name": "get min cost",
+                "id": "3b64e427-0ba8-45b5-8fc0-4e67baf9fa36",
+                "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                },
+                "request": {
+                    "method": "GET",
+                    "header": [{
+                        "key": "Authorization",
+                        "value": "Token 809671e94af2468ae2f9dfc66f81f22f9b569abe",
+                        "type": "text"
+                    }],
+                    "url": {
+                        "raw": "{{baseUrl}}basises/get_min_cost/",
+                        "host": ["{{baseUrl}}basises"],
+                        "path": ["get_min_cost", ""]
+                    },
+                    "description": "для Казахстанских розничных покупателей не показывается цена!"
+                },
+                "response": []
+            }, {
+                "name": "get cost",
+                "id": "35c56c2f-5ef8-4f16-ba55-ab817d8cec16",
+                "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                },
+                "request": {
+                    "method": "POST",
+                    "header": [{
+                        "key": "Authorization",
+                        "value": "Token 809671e94af2468ae2f9dfc66f81f22f9b569abe",
+                        "type": "text"
+                    }],
+                    "body": {
+                        "mode": "formdata",
+                        "formdata": [{
+                            "key": "basis_id",
+                            "value": "2",
+                            "type": "text"
+                        }, {
+                            "key": "length",
+                            "value": "7",
+                            "type": "text"
+                        }, {
+                            "key": "quantity",
+                            "value": "5",
+                            "type": "text"
+                        }]
+                    },
+                    "url": {
+                        "raw": "{{baseUrl}}basises/get_cost/",
+                        "host": ["{{baseUrl}}basises"],
+                        "path": ["get_cost", ""]
+                    },
+                    "description": "для Казахстанских розничных покупателей не показывается цена!"
+                },
+                "response": []
+            }, {
+                "name": "New Request",
+                "id": "3b5238a7-1d0c-45f6-bc32-f278c8ec89de",
+                "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                },
+                "request": {
+                    "method": "POST",
+                    "header": [{
+                        "key": "Authorization",
+                        "value": "{{userToken}}",
+                        "type": "text"
+                    }],
+                    "url": {
+                        "raw": "{{baseUrl}}prints/prints/upload_design/",
+                        "host": ["{{baseUrl}}prints"],
+                        "path": ["prints", "upload_design", ""]
+                    }
+                },
+                "response": []
+            }],
+            "id": "426288f2-1b67-497a-bbc5-d3f0110578ec"
+        }, {
+            "name": "orders",
+            "item": [{
+                "name": "get cart list",
+                "id": "3b84c994-14cd-4150-b56b-90dfa740b9f7",
+                "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                },
+                "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                        "raw": "{{baseUrl}}orders/cart/",
+                        "host": ["{{baseUrl}}orders"],
+                        "path": ["cart", ""]
+                    }
+                },
+                "response": []
+            }, {
+                "name": "add to cart",
+                "id": "ef63f2ad-0d6c-4b76-84d0-6a566e9ee4dd",
+                "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                },
+                "request": {
+                    "method": "POST",
+                    "header": [{
+                        "key": "Authorization",
+                        "value": "{{userToken}}",
+                        "type": "text"
+                    }],
+                    "body": {
+                        "mode": "raw",
+                        "raw": "{\r\n    \"items\": [\r\n        4,\r\n        5\r\n    ]\r\n}",
+                        "options": {
+                            "raw": {
+                                "language": "json"
+                            }
+                        }
+                    },
+                    "url": {
+                        "raw": "{{baseUrl}}orders/add_to_cart/",
+                        "host": ["{{baseUrl}}orders"],
+                        "path": ["add_to_cart", ""]
+                    }
+                },
+                "response": []
+            }, {
+                "name": "create cart item",
+                "id": "6103e36d-b68a-498d-b6d7-692f3594e17f",
+                "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                },
+                "request": {
+                    "method": "POST",
+                    "header": [{
+                        "key": "Authorization",
+                        "value": "{{userToken}}",
+                        "type": "text"
+                    }],
+                    "body": {
+                        "mode": "formdata",
+                        "formdata": [{
+                            "key": "basis",
+                            "value": "",
+                            "description": "id базиса",
+                            "type": "text"
+                        }, {
+                            "key": "print_item",
+                            "value": "",
+                            "description": "id принта",
+                            "type": "text"
+                        }, {
+                            "key": "length",
+                            "value": "",
+                            "description": "длина",
+                            "type": "text"
+                        }, {
+                            "key": "quantity",
+                            "value": "",
+                            "description": "количество",
+                            "type": "text"
+                        }]
+                    },
+                    "url": {
+                        "raw": "{{baseUrl}}orders/cart_items/",
+                        "host": ["{{baseUrl}}orders"],
+                        "path": ["cart_items", ""]
+                    }
+                },
+                "response": []
+            }, {
+                "name": "New Request Copy",
+                "id": "db7b2b1f-f2c4-4671-99b8-bcde34a7d749",
+                "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                },
+                "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                        "raw": "{{baseUrl}}orders/cart_items/",
+                        "host": ["{{baseUrl}}orders"],
+                        "path": ["cart_items", ""]
+                    }
+                },
+                "response": []
+            }],
+            "id": "71e63b9f-8361-4967-a92a-2898affc8bcf"
+        }, {
+            "name": "админка",
+            "item": [{
+                "name": "users",
+                "item": [{
+                    "name": "get users list for admin",
+                    "id": "5d3acf6e-29ca-464e-9db2-b904f76ad522",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "method": "GET",
+                        "header": [{
+                            "key": "Authorization",
+                            "value": "{{token}}",
+                            "type": "text"
+                        }],
+                        "url": {
+                            "raw": "{{baseUrl}}users/users/",
+                            "host": ["{{baseUrl}}users"],
+                            "path": ["users", ""]
+                        }
+                    },
+                    "response": []
+                }, {
+                    "name": "add user by username and password for admin",
+                    "id": "b9911496-ea21-467d-be6d-bcbe1b112999",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "method": "POST",
+                        "header": [{
+                            "key": "Authorization",
+                            "value": "{{token}}",
+                            "type": "text"
+                        }],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [{
+                                "key": "username",
+                                "value": "admin4",
+                                "type": "text"
+                            }, {
+                                "key": "password",
+                                "value": "alternate",
+                                "type": "text"
+                            }]
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}users/users/",
+                            "host": ["{{baseUrl}}users"],
+                            "path": ["users", ""]
+                        }
+                    },
+                    "response": []
+                }, {
+                    "name": "get user by id for admin",
+                    "id": "b8130551-278f-47fc-82e8-56b001d06487",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "method": "GET",
+                        "header": [{
+                            "key": "Authorization",
+                            "value": "{{token}}",
+                            "type": "text"
+                        }],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [{
+                                "key": "username",
+                                "value": "admin4",
+                                "type": "text"
+                            }, {
+                                "key": "password",
+                                "value": "alternate",
+                                "type": "text"
+                            }]
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}users/users/1/",
+                            "host": ["{{baseUrl}}users"],
+                            "path": ["users", "1", ""]
+                        }
+                    },
+                    "response": []
+                }, {
+                    "name": "edit user by id for admin",
+                    "id": "43431621-fe6b-4127-b649-9f4446407d79",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "method": "PUT",
+                        "header": [{
+                            "key": "Authorization",
+                            "value": "{{token}}",
+                            "type": "text"
+                        }],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [{
+                                "key": "username",
+                                "value": "admin4",
+                                "type": "text"
+                            }, {
+                                "key": "password",
+                                "value": "alternate",
+                                "type": "text"
+                            }]
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}users/users/1/",
+                            "host": ["{{baseUrl}}users"],
+                            "path": ["users", "1", ""]
+                        }
+                    },
+                    "response": []
+                }, {
+                    "name": "delete user by id for admin",
+                    "id": "5a61a5c4-85fe-457c-9f62-399a229cee6e",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "method": "DELETE",
+                        "header": [{
+                            "key": "Authorization",
+                            "value": "{{token}}",
+                            "type": "text"
+                        }],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [{
+                                "key": "username",
+                                "value": "admin4",
+                                "type": "text"
+                            }, {
+                                "key": "password",
+                                "value": "alternate",
+                                "type": "text"
+                            }]
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}users/users/1/",
+                            "host": ["{{baseUrl}}users"],
+                            "path": ["users", "1", ""]
+                        }
+                    },
+                    "response": []
+                }],
+                "id": "7504021f-77e8-4f38-b6e8-81e99ed0dde7"
+            }, {
+                "name": "groups",
+                "item": [{
+                    "name": "get groups",
+                    "id": "494e499f-41cc-4339-af3f-207c90e5d8ca",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}users/groups/",
+                            "host": ["{{baseUrl}}users"],
+                            "path": ["groups", ""]
+                        }
+                    },
+                    "response": []
+                }],
+                "id": "30b7bd34-fdc8-4934-8c25-5eb885b80fa4"
+            }],
+            "id": "ae63cb70-907c-472c-aea7-3311c91d4ab5"
+        }],
+        "event": [{
+            "listen": "prerequest",
+            "script": {
+                "id": "f0c532b7-9747-4cdf-a42c-51b4afff570e",
+                "type": "text/javascript",
+                "exec": [""]
+            }
+        }, {
+            "listen": "test",
+            "script": {
+                "id": "6849c907-3e35-4948-96a5-44e23a448b0e",
+                "type": "text/javascript",
+                "exec": [""]
+            }
+        }],
+        "variable": [{
+            "id": "a66302bf-3dd6-47b6-ba94-72a0bf10fc44",
+            "key": "baseUrl",
+            "value": "",
+            "type": "string"
+        }, {
+            "id": "785a597e-19b6-4d1a-a58e-1b687db136fc",
+            "key": "token",
+            "value": "",
+            "type": "string"
+        }, {
+            "id": "93ea8ebd-e55c-4347-970b-a2bb3ac788f4",
+            "key": "userToken",
+            "value": "",
+            "type": "string"
+        }]
+    }
+}
