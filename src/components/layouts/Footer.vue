@@ -1,3 +1,5 @@
+<!-- @format -->
+
 <template>
   <div class="footer">
     <div class="container">
@@ -10,19 +12,19 @@
           </div>
           <ul class="footer__list">
             <li @click="route('about')" class="footer__list-item">
-              {{ lang === "Ru" ? "О компании" : "Company" }}
+              {{ lang === "Ru" ? "О компании" : "Компания жайлы" }}
             </li>
             <router-link to="/news" tag="li" class="footer__list-item">
-              {{ lang === "Ru" ? "Новости" : "News" }}
+              {{ lang === "Ru" ? "Новости" : "Жаңалықтар" }}
             </router-link>
             <router-link to="/blogs" tag="li" class="footer__list-item">
-              {{ lang === "Ru" ? "Блог" : "Blog" }}
+              {{ lang === "Ru" ? "Блог" : "Блог" }}
             </router-link>
             <li @click="route('designersAbout')" class="footer__list-item">
-              {{ lang === "Ru" ? "Дизайнеры о нас" : "Designers about us" }}
+              {{ lang === "Ru" ? "Дизайнеры о нас" : "Біз туралы дизайнерлер" }}
             </li>
             <router-link to="/contacts" tag="li" class="footer__list-item">
-              {{ lang === "Ru" ? "Контакты" : "Contacts" }}
+              {{ lang === "Ru" ? "Контакты" : "Контактілер" }}
             </router-link>
           </ul>
         </div>
@@ -30,7 +32,10 @@
           <a class="footer__social-link" href="#?">
             <img src="@/assets/img/icons/facebook.svg" alt="" />
           </a>
-          <a class="footer__social-link" href="#?">
+          <a
+            class="footer__social-link"
+            href="https://instagram.com/tahit.kz?igshid=MzRlODBiNWFlZA=="
+            target="_blank">
             <img src="@/assets/img/icons/instagram.svg" alt="" />
           </a>
         </div>
@@ -40,15 +45,19 @@
           {{
             lang === "Ru"
               ? "Все права защищены © 2022"
-              : "All rights reserved © 2022"
+              : "Барлық құқықтар қорғалған © 2022"
           }}
         </p>
-        <p>
-          {{ lang === "Ru" ? "Политика конфиденциальности" : "Privacy Policy" }}
-        </p>
+        <router-link to="/confidentially">
+          <p>
+            {{
+              lang === "Ru" ? "Политика конфиденциальности" : "Құпиялылық саясаты"
+            }}
+          </p>
+        </router-link>
       </div>
       <div class="alux-dev">
-        <p>{{ lang === "Ru" ? "Разработано в" : "Developed by" }}</p>
+        <p>{{ lang === "Ru" ? "Разработано в" : "Жасалган" }}</p>
         <a href="https://a-lux.kz/" target="_blank">
           <img src="@/assets/img/a-lux.png" alt="" />
         </a>

@@ -1,3 +1,5 @@
+<!-- @format -->
+
 <template>
   <div>
     <div @click="closeModal" class="edit-address"></div>
@@ -10,10 +12,10 @@
           type === "Редактировать адрес" && $cookie.get("lang") === "Ru"
             ? "Редактировать адрес"
             : type === "Редактировать адрес" && $cookie.get("lang") === "En"
-            ? "Edit address"
+            ? "Мекенжайды өзгерту"
             : type === "Добавить адрес" && $cookie.get("lang") === "Ru"
             ? "Добавить адрес"
-            : "Add address"
+            : "Мекенжайды қосу"
         }}
       </h3>
       <validation-observer ref="changeData">
@@ -21,36 +23,42 @@
           <div class="edit-address__select edit-address__item">
             <app-select
               style="z-index: 5"
-              :title="lang === 'Ru' ? 'Страна' : 'Country'"
+              :title="lang === 'Ru' ? 'Страна' : 'Мемлекет'"
               :label="
-                inputValue.name !== '' ? inputValue.name : 'Выберите страну'
+                inputCountry === ''
+                  ? lang === 'Ru'
+                    ? 'Выберите страну'
+                    : 'Елді таңдаңыз'
+                  : inputCountry.name
               "
-              :items="country"
-              :country="inputValue"
-              @input="changeInput"
-            />
+              :items="countries"
+              @input="changeCountry" />
           </div>
           <div class="edit-address__select edit-address__item">
             <app-select
               style="z-index: 4"
-              :title="lang === 'Ru' ? 'Город' : 'City'"
-              :label="inputCity.name === '' ? 'Выберите город' : inputCity.name"
+              :title="lang === 'Ru' ? 'Город' : 'Қала'"
+              :label="
+                inputCity === ''
+                  ? lang === 'Ru'
+                    ? 'Выберите город'
+                    : 'Қаланы таңдаңыз'
+                  : inputCity.name
+              "
               :items="cities"
-              @input="changeInputCity"
-            />
+              @input="changeCity" />
           </div>
           <div class="edit-address__input edit-address__item">
             <validation-provider
               style="width: 100%"
               v-slot="{ errors }"
-              rules="required|min"
-            >
+              :items="countries"
+              rules="required|min">
               <app-input
-                v-model="addresses[0].index"
-                :title="lang === 'Ru' ? 'Индекс' : 'Postal code'"
-                :placeholder="addresses[0].index"
+                :title="lang === 'Ru' ? 'Индекс' : 'Индекс'"
+                :placeholder="addresses.index"
                 v-mask="'##########'"
-              />
+                v-model="addresses.index" />
               <label for="index">
                 <span style="color: red">{{ errors[0] }}</span></label
               >
@@ -61,11 +69,10 @@
               <validation-provider v-slot="{ errors }" rules="required">
                 <app-input
                   style="z-index: 3"
-                  :title="lang === 'Ru' ? 'Улица' : 'Street'"
-                  :placeholder="addresses[0].street"
+                  :title="lang === 'Ru' ? 'Улица' : 'Көше'"
+                  :placeholder="addresses.street"
                   :items="streets"
-                  v-model="addresses[0].street"
-                />
+                  v-model="addresses.street" />
                 <label for="street">
                   <span style="color: red">{{ errors[0] }}</span
                   ><br />
@@ -75,10 +82,9 @@
             <div class="edit-address__input">
               <validation-provider v-slot="{ errors }" rules="required">
                 <app-input
-                  v-model="addresses[0].home"
-                  :title="lang === 'Ru' ? 'Дом' : 'House'"
-                  :placeholder="addresses[0].home"
-                />
+                  :title="lang === 'Ru' ? 'Дом' : 'үй'"
+                  :placeholder="addresses.home"
+                  v-model="addresses.home" />
                 <label for="house">
                   <span style="color: red">{{ errors[0] }}</span
                   ><br />
@@ -87,7 +93,7 @@
             </div>
           </div>
           <button class="edit-address__btn">
-            {{ lang === "Ru" ? "Сохранить" : "Save" }}
+            {{ lang === "Ru" ? "Сохранить" : "Сақтау" }}
           </button>
         </form>
       </validation-observer>
@@ -119,18 +125,17 @@ export default {
   data() {
     return {
       lang: this.$cookie.get("lang"),
-      addresses: [
-        {
-          country: "",
-          city: "",
-          index: "",
-          street: "",
-          home: "",
-        },
-      ],
-      inputValue: "",
+      addresses: {
+        country: null,
+        city: null,
+        index: "",
+        street: "",
+        home: "",
+        is_main: true,
+      },
+      inputCountry: "",
       inputCity: "",
-      country: [],
+      countries: [],
       cities: [],
       streets: [
         {
@@ -156,52 +161,52 @@ export default {
   },
   computed: {
     ...mapState("userModule", ["user"]),
-    ...mapState(["countries"]),
+    // ...mapState(["countries"]),
   },
   created() {
     if (this.type === "Редактировать адрес") {
       api.getAddressById(this.id).then((res) => {
-        this.country = res.result[0].country;
-        this.inputValue = res.result[0].country;
+        this.inputCountry = res.result[0].country;
+        this.countries = res.result[0].country;
         this.inputCity = res.result[0].city;
-        this.addresses[0].city = res.result[0].city.id;
         this.cities = res.result[0].country.cities;
-        this.addresses[0].index = res.result[0].index;
-        this.addresses[0].home = res.result[0].home;
-        this.addresses[0].street = res.result[0].street;
+        this.addresses.country = res.result[0].country;
+        this.addresses.city = res.result[0].city;
+        this.addresses.index = res.result[0].index;
+        this.addresses.home = res.result[0].home;
+        this.addresses.street = res.result[0].street;
       });
     } else {
       api.getAddresses().then((res) => {
-        console.log(res, "ownefnweoinf");
-        this.country = res.result[0].country;
-        this.inputValue = res.result[0].country;
+        this.inputCountry = res.result[0].country;
+        this.countries = res.result[0].country;
         this.inputCity = res.result[0].city;
-        this.addresses[0].city = res.result[0].city.id;
         this.cities = res.result[0].country.cities;
+        this.addresses.country = res.result[0].country;
+        this.addresses.city = res.result[0].city;
       });
     }
   },
   methods: {
-    changeInput(event) {
-      console.log(event, "country changed");
-      this.inputValue = event;
-      this.cities = this.inputValue.cities;
+    changeCountry(event) {
+      this.inputCountry = event;
+      this.cities = this.inputCountry.cities;
       this.inputCity = "";
-      this.addresses[0].country = this.inputValue.id;
+      this.addresses.country = this.inputCountry;
     },
-    changeInputCity(event) {
+    changeCity(event) {
       this.inputCity = event;
-      this.addresses[0].city = this.inputCity.id;
+      this.addresses.city = this.inputCity;
     },
     closeModal() {
       this.$emit("close");
     },
     makeAddress() {
-      console.log(this.addresses[0]);
       if (this.type === "Редактировать адрес") {
         this.$refs.changeData.validate().then((e) => {
           if (e === false) return;
-          this.addresses[0].country = this.country;
+          this.addresses.country = this.country;
+          this.addresses.city = this.addresses.city.id;
           api
             .editAddress(this.id, this.addresses)
             .then(() => {
@@ -214,7 +219,8 @@ export default {
       } else {
         this.$refs.changeData.validate().then((e) => {
           if (e === false) return;
-          this.addresses[0].country = this.country.id;
+          // this.addresses.country = this.country.id;
+          this.addresses.city = this.addresses.city.id;
           api
             .addAddress(this.addresses)
             .then(() => {

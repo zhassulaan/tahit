@@ -1,30 +1,31 @@
+<!-- @format -->
+
 <template>
   <div class="thanks-order">
     <div class="thanks-order__content">
       <img
         class="thanks-order__img"
         src="@/assets/basket/delivery-box.svg"
-        alt=""
-      />
+        alt="" />
       <h6 class="thanks-order__title">
         {{
           $cookie.get("lang") === "Ru"
             ? `Спасибо за заказ`
-            : `Thanks for your order`
+            : `Сіздің тапсырыс үшін рахмет`
         }}
       </h6>
       <p class="thanks-order__text">
         {{
           $cookie.get("lang") === "Ru"
             ? `Ваш заказ успешно оформлен.`
-            : `Your order has been successfully placed.`
+            : `Тапсырысыңыз сәтті орналастырылды.`
         }}
       </p>
       <p class="thanks-order__text">
         {{
           $cookie.get("lang") === "Ru"
             ? `Информация о заказе будет доступна в личном кабинете.`
-            : `Information about the order will be available in your account.`
+            : `Тапсырыс туралы ақпарат сіздің есептік жазбаңызда қолжетімді болады.`
         }}
       </p>
     </div>
@@ -42,6 +43,10 @@ export default {
 @import "@/assets/scss/media.scss";
 @import "@/assets/scss/reset.sass";
 .thanks-order {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   background-color: #f0f2f5;
   padding: rem(62) rem(125);
   text-align: center;

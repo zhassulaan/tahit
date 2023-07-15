@@ -1,3 +1,5 @@
+<!-- @format -->
+
 <template>
   <div class="blog">
     <div class="container">
@@ -36,8 +38,7 @@
             <router-link
               :to="{ name: 'FullNews', params: { id: item.id } }"
               class="blog-sitebar_info"
-              v-if="index < 3"
-            >
+              v-if="index < 3">
               <div class="blog-sitebar_info-title">
                 {{ item.name }}
               </div>
@@ -49,13 +50,12 @@
                   {{ item.updated_at.split("T")[0] }}
                 </div>
                 <router-link
-                  :to="{ name: 'FullNews', params: { id: item.id } }"
-                >
+                  :to="{ name: 'FullNews', params: { id: item.id } }">
                   <div class="blog-sitebar_info-btn">
                     {{
                       $cookie.get("lang") === "Ru"
                         ? `Узнать больше`
-                        : `See more`
+                        : `Көбірек көру`
                     }}
                   </div>
                 </router-link>
@@ -64,8 +64,7 @@
             <router-link
               :to="{ name: 'FullNews', params: { id: item.id } }"
               class="blog-sitebar_img"
-              v-if="index < 3"
-            >
+              v-if="index < 3">
               <img :src="item.image" alt="" />
             </router-link>
           </div>
@@ -153,9 +152,14 @@ export default {
     text-align: left;
 
     &_title {
-      font-size: rem(32);
-      line-height: rem(39);
-      margin-bottom: rem(48);
+      font-family: "Playfair Display";
+      font-style: normal;
+      font-weight: 400;
+      font-size: rem(42);
+      line-height: rem(56);
+      text-align: center;
+      color: #182040;
+      margin-bottom: rem(50);
     }
     &_text {
       color: #656c72;

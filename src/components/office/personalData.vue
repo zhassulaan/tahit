@@ -1,3 +1,5 @@
+<!-- @format -->
+
 <template>
   <div class="officeContent">
     <div class="officeContent__container">
@@ -9,10 +11,9 @@
                 <div class="officeContent__input">
                   <validation-provider v-slot="{ errors }" rules="required">
                     <app-input
-                      :title="lang === 'Ru' ? 'Имя' : 'Name'"
+                      :title="lang === 'Ru' ? 'Имя' : 'Аты'"
                       v-model="changeData.first_name"
-                      :placeholder="changeData.first_name"
-                    />
+                      :placeholder="changeData.first_name" />
                     <label for="first_name">
                       <span style="color: red">{{ errors[0] }}</span
                       ><br />
@@ -23,18 +24,16 @@
                   <validation-provider
                     style="width: 100%"
                     v-slot="{ errors }"
-                    rules="required|phone_number"
-                  >
+                    rules="required|phone_number">
                     <app-input
-                      :title="lang === 'Ru' ? 'Телефон' : 'Phone'"
+                      :title="lang === 'Ru' ? 'Телефон' : 'Телефон'"
                       v-mask="
                         country === 'KZ' || country === 'RU'
                           ? '+7 (###) ###-##-##'
                           : '+375 ## ### ## ##'
                       "
                       :placeholder="changeData.username"
-                      v-model="changeData.username"
-                    />
+                      v-model="changeData.username" />
                     <label for="phone_number">
                       <span style="color: red">{{ errors[0] }}</span></label
                     >
@@ -98,10 +97,9 @@
                 <div class="officeContent__input">
                   <validation-provider v-slot="{ errors }" rules="required">
                     <app-input
-                      :title="lang === 'Ru' ? 'Фамилия' : 'Surname'"
+                      :title="lang === 'Ru' ? 'Фамилия' : 'Тегі'"
                       :placeholder="changeData.last_name"
-                      v-model="changeData.last_name"
-                    />
+                      v-model="changeData.last_name" />
                     <label for="last_name">
                       <span style="color: red">{{ errors[0] }}</span
                       ><br />
@@ -112,19 +110,17 @@
                   <validation-provider
                     style="width: 100%"
                     v-slot="{ errors }"
-                    rules="required|email"
-                  >
+                    rules="required|email">
                     <app-input
                       :title="'Email'"
                       v-model="changeData.email"
-                      :placeholder="changeData.email"
-                    />
+                      :placeholder="changeData.email" />
                     <label for="email">
                       <span style="color: red">{{
                         errors[0] === "email"
                           ? lang === "Ru"
                             ? "Неправильно введен email"
-                            : "Incorrect email"
+                            : "Электрондық пошта қате енгізілді"
                           : errors[0]
                       }}</span></label
                     >
@@ -133,7 +129,7 @@
               </div>
             </div>
             <button>
-              {{ lang === "Ru" ? `Сохранить` : `Save` }}
+              {{ lang === "Ru" ? `Сохранить` : `Сақтау` }}
             </button>
           </form>
         </validation-observer>

@@ -1,3 +1,5 @@
+<!-- @format -->
+
 <template>
   <div class="mainWrapper">
     <div class="home" v-if="banerHeder">
@@ -11,6 +13,9 @@
               {{ banerHeder.text }}
             </p>
             <img class="home__content-img" :src="banerHeder.image" alt="" />
+            <a class="home__content-link" :href="link">
+              Узнать больше
+            </a>
           </div>
         </div>
       </div>
@@ -41,11 +46,14 @@ export default {
     return {
       banerHeder: "",
       banerPage: "",
+      link: "",
     };
   },
   created() {
     api.getMainBaner().then((res) => {
       console.log(res, "banners");
+      this.link = res[0].url;
+
       res.forEach((e) => {
         if (e.is_main) {
           this.banerHeder = e.items[0];
@@ -102,6 +110,16 @@ export default {
     }
     &-img {
       display: none;
+    }
+    &-link {
+      padding: rem(14) rem(30);
+      background: var(--button, #f7bd7f);
+      color: #fff;
+      text-align: center;
+      font-size: rem(16);
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
     }
   }
 }

@@ -44,7 +44,6 @@ html {
 }
 
 .header__nav ul li {
-  padding-right: rem(68);
 }
 
 .header__nav ul li {
@@ -137,7 +136,7 @@ p.language__text {
 }
 
 .header__left {
-  width: 65%;
+  width: 55%;
 }
 .header__right {
   width: 40%;
@@ -147,6 +146,9 @@ p.language__text {
   display: flex;
   // justify-content: space-around;
   list-style: none;
+  align-items: center;
+  justify-content: space-between;
+  width: rem(750);
 }
 
 .header__navItem {

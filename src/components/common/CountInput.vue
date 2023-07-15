@@ -1,7 +1,7 @@
 <template>
   <div class="count">
     <p class="count__label">
-      {{ $cookie.get("lang") === "Ru" ? `Количество` : `Quantity` }}
+      {{ $cookie.get("lang") === "Ru" ? `Количество` : `Мөлшері` }}
     </p>
     <div class="count__input">
       <input :disabled="disabled" type="number" v-model="count" />

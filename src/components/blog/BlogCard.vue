@@ -14,7 +14,7 @@
         <button
           style="text-decoration: underline; font-weight: 600; color: #f7bd7f"
         >
-          {{ $cookie.get("lang") === "Ru" ? `Узнать больше` : `See more` }}
+          {{ $cookie.get("lang") === "Ru" ? `Узнать больше` : `Көбірек көру` }}
         </button>
         <div class="blog-card_info-data" style="color: black">
           {{ blog.updated_at.split("T")[0] }}
@@ -39,6 +39,9 @@ export default {
 @import "@/assets/scss/media.scss";
 
 .blog-card {
+  @media (max-width: 640px) {
+    width: 100%;
+  }
   .blog-card_info {
     display: flex;
     flex-direction: column;
@@ -52,9 +55,13 @@ export default {
     display: flex;
     align-items: center;
     position: relative;
-    flex-direction: wrap;
+    @media (max-width: 900px) {
+      flex-wrap: wrap;
+      flex-direction: column !important;
+    }
     @media (max-width: 640px) {
       flex-direction: column;
+      margin: 0 auto;
     }
     img {
       width: rem(460);

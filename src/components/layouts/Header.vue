@@ -1,3 +1,5 @@
+<!-- @format -->
+
 <template>
   <div class="header">
     <div class="header__container">
@@ -9,8 +11,7 @@
         </button>
         <burger-menu
           @close="openBurger = false"
-          :burger="openBurger"
-        ></burger-menu>
+          :burger="openBurger"></burger-menu>
       </div>
       <div class="header__left">
         <router-link to="/" class="headerLogo">
@@ -19,23 +20,23 @@
         <div class="header__nav">
           <ul class="header__navItems">
             <li class="header__navItem" @click="route('about')">
-              {{ lang === "Ru" ? "О компании" : "Company" }}
+              {{ lang === "Ru" ? "О компании" : "Компания жайлы" }}
             </li>
             <!-- :to="{ path: '/', query: { name: 'about' } }" -->
             <router-link to="/catalog" tag="li" class="header__navItem">
-              {{ lang === "Ru" ? "Каталог" : "Catalog" }}
+              {{ lang === "Ru" ? "Каталог" : "Каталог" }}
             </router-link>
             <router-link to="/news" tag="li" class="header__navItem">
-              {{ lang === "Ru" ? "Новости" : "News" }}
+              {{ lang === "Ru" ? "Новости" : "Жаңалықтар" }}
             </router-link>
             <router-link to="/blogs" tag="li" class="header__navItem">
-              {{ lang === "Ru" ? "Блог" : "Blog" }}
+              {{ lang === "Ru" ? "Блог" : "Блог" }}
             </router-link>
             <li @click="route('designersAbout')" class="header__navItem">
-              {{ lang === "Ru" ? "Дизайнеры о нас" : "Designers about us" }}
+              {{ lang === "Ru" ? "Дизайнеры о нас" : "Біз туралы дизайнерлер" }}
             </li>
             <router-link to="/contacts" tag="li" class="header__navItem">
-              {{ lang === "Ru" ? "Контакты" : "Contacts" }}
+              {{ lang === "Ru" ? "Контакты" : "Контактілер" }}
             </router-link>
           </ul>
         </div>
@@ -43,7 +44,9 @@
       <div class="header__right">
         <router-link to="/design" class="header__item uploadBtn">
           <p class="uploadBtn__content">
-            {{ lang === "Ru" ? "Загрузить свой дизайн" : "Upload your design" }}
+            {{
+              lang === "Ru" ? "Загрузить свой дизайн" : "Дизайныңызды жүктеңіз"
+            }}
           </p>
         </router-link>
         <div class="header-flex">
@@ -56,42 +59,36 @@
             <form
               action=""
               @submit.prevent="Search()"
-              style="position: relative; width: 100%"
-            >
+              style="position: relative; width: 100%">
               <input
                 type="text"
                 placeholder="Поиск"
                 class="header__input"
                 v-model="searchInput"
-                :style="search ? '' : 'padding: 0px;'"
-              />
+                :style="search ? '' : 'padding: 0px;'" />
             </form>
             <div
               class="header__search header__item modal__search"
               :style="search ? 'position: relative' : 'display:none'"
-              @click="search = !search"
-            >
+              @click="search = !search">
               <svg
                 width="24"
                 height="25"
                 viewBox="0 0 24 25"
                 fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
+                xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M18 6.5L6 18.5"
                   stroke="#182040"
                   stroke-width="2"
                   stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
+                  stroke-linejoin="round" />
                 <path
                   d="M6 6.5L18 18.5"
                   stroke="#182040"
                   stroke-width="2"
                   stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
+                  stroke-linejoin="round" />
               </svg>
             </div>
           </div>
@@ -100,8 +97,7 @@
               @click="search = !search"
               src="../../assets/main/Search.svg"
               alt=""
-              style="cursor: pointer"
-            />
+              style="cursor: pointer" />
           </div>
           <router-link to="/basket" class="header__basket header__item">
             <img src="../../assets/main/basket.svg" alt="" />
@@ -111,24 +107,21 @@
             <button @click="select = !select" class="language header__item">
               <img
                 v-if="lang === 'En'"
-                src="../../assets/main/english.svg"
-                alt=""
-              />
+                src="../../assets/kz.svg"
+                alt="" />
               <img v-else src="../../assets/Flag_of_Russia.svg.png" alt="" />
               <p class="language__text">{{ lang }}</p>
             </button>
             <ul class="lang-select" v-if="select">
               <button
                 @click="langSelect('Ru')"
-                class="select__item lang-select__item"
-              >
+                class="select__item lang-select__item">
                 Ru
               </button>
               <button
                 @click="langSelect('En')"
-                class="select__item lang-select__item"
-              >
-                En
+                class="select__item lang-select__item">
+                Kz
               </button>
             </ul>
           </div>

@@ -1,8 +1,10 @@
+<!-- @format -->
+
 <template>
   <div class="contacts">
     <div class="contacts__container">
       <h1 class="contacts__header">
-        {{ lang === "Ru" ? "Контакты" : "Contacts" }}
+        {{ lang === "Ru" ? "Контакты" : "Контактілер" }}
       </h1>
       <p class="contacts__content">
         {{ contacts.text }}
@@ -23,6 +25,9 @@
           <a class="contacts__vidget">
             <img src="../assets/contacts/mail.svg" alt="" />
             <p>{{ contacts.email }}</p>
+          </a>
+          <a class="contacts__vidget" v-if="contacts.bin">
+            <p>{{ lang === "Ru" ? "БИН:" : "БИН:" }} {{ contacts.bin }}</p>
           </a>
         </div>
       </div>

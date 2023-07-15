@@ -16,7 +16,7 @@
     </div>
     <div v-if="isShowDropdown" class="select__dropdown">
       <ul class="select__list" v-if="items.length > 0">
-        <div v-for="item in items" :key="item" @click="selectItem(item)">
+        <div v-for="item in items" :key="item.id" @click="selectItem(item)">
           <li class="select__item">
             {{ item.name }}
           </li>
@@ -51,7 +51,6 @@ export default {
   },
   methods: {
     selectItem(item) {
-      console.log(this.country, "iqbfiubqefiubewifbwiube");
       this.selectedItem = item;
       this.isShowDropdown = false;
       this.$emit("input", item);
@@ -135,9 +134,6 @@ export default {
     &::-webkit-scrollbar-thumb:hover {
       background: #555;
     }
-  }
-
-  &__list {
   }
 
   &__item {

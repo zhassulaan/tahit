@@ -1,3 +1,5 @@
+<!-- @format -->
+
 <template>
   <div class="history">
     <div class="history__one__container" v-if="modalHistory">
@@ -8,24 +10,22 @@
             height="30"
             viewBox="0 0 30 30"
             fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
+            xmlns="http://www.w3.org/2000/svg">
             <path
               d="M18.75 22.5L11.25 15L18.75 7.5"
               stroke="#63666C"
               stroke-width="2"
               stroke-linecap="round"
-              stroke-linejoin="round"
-            />
+              stroke-linejoin="round" />
           </svg>
-          {{ lang === "Ru" ? "Вернуться назад" : "Go back" }}
+          {{ lang === "Ru" ? "Вернуться назад" : "Артқа қайту" }}
         </button>
       </div>
       <div class="history__one__block">
         <div class="history__one__left">
           <div class="border-yellow">
             <p>
-              {{ lang === "Ru" ? "Номер заказа" : "Order number" }}: №{{
+              {{ lang === "Ru" ? "Номер заказа" : "Тапсырыс нөмірі" }}: №{{
                 modalHistory.id
               }}
             </p>
@@ -36,7 +36,7 @@
           <span> +777 7777 777</span>
 
           <p>Способ доставки:</p>
-          <p>72753031-4b5f-4084-9b09-c50b84a23da6</p>
+          <p>{{ modalHistory.delivery === "cdek" ? "СДЭК" : "Самовывоз" }}</p>
           <div class="border-yellow">
             <p>Способ оплаты:</p>
             <span> Платежная карта (онлайн)</span>
@@ -46,7 +46,14 @@
             >Стоимость товара: {{ modalHistory.total_price }}
             {{ modalHistory.currency }}</span
           >
-          <span>Стоимость доставки: бесплатно</span>
+          <span
+            >Стоимость доставки:
+            {{
+              modalHistory.delivery_price === 0
+                ? "бесплатно"
+                : modalHistory.delivery_price
+            }}</span
+          >
           <span
             >Итого: {{ modalHistory.total_price }}
             {{ modalHistory.currency }}</span
@@ -60,8 +67,7 @@
           <div
             class="history__one__right__block"
             v-for="item in modalHistory.orderitems"
-            :key="item.id"
-          >
+            :key="item.id">
             <img :src="item.basis.template" alt="" />
             <div class="history__one__right__info">
               <div class="history__one__right__title">
@@ -95,8 +101,7 @@
         class="history__block"
         @click="modalHistory = item"
         v-for="item in items"
-        :key="item"
-      >
+        :key="item">
         <div class="history__block__title">
           <p>
             {{ lang === "Ru" ? "Номер заказа" : "Order number" }}: №{{

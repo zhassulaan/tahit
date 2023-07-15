@@ -1,3 +1,5 @@
+<!-- @format -->
+
 <template>
   <div class="officeNav">
     <div class="officeNav__container">
@@ -12,65 +14,49 @@
           <ul class="burger__bar">
             <li
               :class="{ isActive: officeTab === 'personalData' }"
-              @click="switchBtn('personalData'), (openBurger = false)"
-            >
+              @click="switchBtn('personalData'), (openBurger = false)">
               <a href="#?">
                 {{
-                  lang === "Ru" ? `Личная информация ` : `Personal information`
+                  lang === "Ru" ? `Личная информация ` : `Жеке ақпарат`
                 }}
               </a>
               <Arrow />
             </li>
             <li
               :class="{ isActive: officeTab === 'passwordEdit' }"
-              @click="switchBtn('passwordEdit'), (openBurger = false)"
-            >
+              @click="switchBtn('passwordEdit'), (openBurger = false)">
               <a href="#?">
-                {{ lang === "Ru" ? `Смена пароля ` : `Change password` }}
+                {{ lang === "Ru" ? `Смена пароля ` : `Құпиясөзді өзгерту` }}
               </a>
               <Arrow />
             </li>
             <li
               :class="{ isActive: officeTab === 'myAddresses' }"
-              @click="switchBtn('myAddresses'), (openBurger = false)"
-            >
+              @click="switchBtn('myAddresses'), (openBurger = false)">
               <a href="#?">
-                {{ lang === "Ru" ? `Мои адреса ` : `My addresses` }}
+                {{ lang === "Ru" ? `Мои адреса ` : `Менің мекенжайларым` }}
               </a>
               <Arrow />
             </li>
             <li
               :class="{ isActive: officeTab === 'Favorites' }"
-              @click="switchBtn('Favorites'), (openBurger = false)"
-            >
+              @click="switchBtn('Favorites'), (openBurger = false)">
               <a href="#?">
-                {{ lang === "Ru" ? `Избранное ` : `Favorite` }}
+                {{ lang === "Ru" ? `Избранное ` : `Таңдаулылар` }}
               </a>
               <Arrow />
             </li>
             <li
               :class="{ isActive: officeTab === 'History' }"
-              @click="switchBtn('History'), (openBurger = false)"
-            >
+              @click="switchBtn('History'), (openBurger = false)">
               <a href="#?">
-                {{ lang === "Ru" ? `История заказов ` : `History of orders` }}
+                {{ lang === "Ru" ? `История заказов ` : `Тапсырыстар тарихы` }}
               </a>
               <Arrow />
             </li>
             <li>
-              <a
-                @click="leave()"
-                href="#?"
-                style="
-                  font-family: Lato Regular;
-                  font-style: normal;
-                  font-size: 1rem;
-                  line-height: 130%;
-                  color: #464c52;
-                  margin-left: 5px;
-                "
-              >
-                {{ lang === "Ru" ? `Выйти ` : `Leave` }}
+              <a @click="leave()" href="#?">
+                {{ lang === "Ru" ? `Выйти ` : `Шығу` }}
               </a>
             </li>
           </ul>
@@ -81,50 +67,45 @@
           <a
             @click="switchBtn('personalData')"
             :class="{ isActive: officeTab === 'personalData' }"
-            href="#?"
-          >
-            {{ lang === "Ru" ? `Личная информация ` : `Personal information` }}
+            href="#?">
+            {{ lang === "Ru" ? `Личная информация ` : `Жеке ақпарат` }}
           </a>
         </li>
         <li>
           <a
             @click="switchBtn('passwordEdit')"
             :class="{ isActive: officeTab === 'passwordEdit' }"
-            href="#?"
-          >
-            {{ lang === "Ru" ? `Смена пароля ` : `Change password` }}
+            href="#?">
+            {{ lang === "Ru" ? `Смена пароля ` : `Құпиясөзді өзгерту` }}
           </a>
         </li>
         <li>
           <a
             @click="switchBtn('myAddresses')"
             :class="{ isActive: officeTab === 'myAddresses' }"
-            href="#?"
-          >
-            {{ lang === "Ru" ? `Мои адреса ` : `My addresses` }}
+            href="#?">
+            {{ lang === "Ru" ? `Мои адреса ` : `Менің мекенжайларым` }}
           </a>
         </li>
         <li>
           <a
             @click="switchBtn('Favorites')"
             :class="{ isActive: officeTab === 'Favorites' }"
-            href="#?"
-          >
-            {{ lang === "Ru" ? `Избранное ` : `Favorite` }}
+            href="#?">
+            {{ lang === "Ru" ? `Избранное ` : `Таңдаулылар` }}
           </a>
         </li>
         <li>
           <a
             @click="switchBtn('History')"
             :class="{ isActive: officeTab === 'History' }"
-            href="#?"
-          >
-            {{ lang === "Ru" ? `История заказов ` : `History of orders` }}
+            href="#?">
+            {{ lang === "Ru" ? `История заказов ` : `Тапсырыстар тарихы` }}
           </a>
         </li>
         <li>
           <a @click="leave()" href="#?">
-            {{ lang === "Ru" ? `Выйти ` : `Exit` }}
+            {{ lang === "Ru" ? `Выйти ` : `Шығу` }}
           </a>
         </li>
       </ul>
@@ -174,7 +155,7 @@ export default {
         confirm(
           this.lang === "Ru"
             ? "Вы точно хотите выйти?"
-            : "Are you sure to go out?"
+            : "Сыртқа шыққыңыз келетініне сенімдісіз бе?"
         )
       ) {
         this.$cookie.delete("token");
@@ -214,7 +195,6 @@ export default {
   &__bar {
     svg {
       position: relative;
-      top: 2px;
       width: 25px;
       height: 25px;
     }
@@ -235,15 +215,14 @@ export default {
       margin: 0 !important;
       padding: 15px;
       display: flex;
-    }
-    a:last-child {
-      font-family: cursive;
-      position: relative;
-      bottom: 2px;
-      right: 6px;
+      align-items: center;
     }
     a {
-      font-size: 20px !important;
+      font-weight: 700;
+      font-size: rem(50);
+      line-height: 130%;
+      color: #464c52;
+      text-align: left;
     }
   }
   &__content.isActive {
@@ -263,7 +242,7 @@ export default {
       position: absolute;
       font-family: monospace;
       left: 2vw;
-      top: -32px;
+      top: -37px;
     }
     display: none;
     flex-direction: column;
@@ -327,12 +306,11 @@ export default {
     padding-top: rem(1);
     border-right: 1px solid #dbe0e9;
     ul li a {
-      font-family: "Lato Regular";
-      font-style: normal;
-      // font-weight: 700;
-      font-size: rem(20);
+      font-weight: 700;
+      font-size: rem(18);
       line-height: 130%;
       color: #464c52;
+      text-align: left;
     }
     ul {
       text-align: left;

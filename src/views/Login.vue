@@ -4,7 +4,7 @@
       <div class="auth-row">
         <div class="auth-login">
           <div class="auth-titile">
-            {{ lang === "Ru" ? `Вход` : `Login` }}
+            {{ lang === "Ru" ? `Вход` : `Кіру` }}
           </div>
           <validation-observer ref="authForm">
             <form @submit.prevent="auth" action="" class="auth-login_form">
@@ -14,7 +14,7 @@
               >
                 <app-input
                   v-model="authData.username"
-                  :title="lang === 'Ru' ? 'Телефон' : 'Phone'"
+                  :title="lang === 'Ru' ? 'Телефон' : 'Телефон'"
                   v-mask="
                     country === 'KZ' || country === 'RU'
                       ? '+7 (###) ###-##-##'
@@ -36,7 +36,7 @@
               >
                 <app-input
                   v-model="authData.password"
-                  :title="lang === 'Ru' ? 'Пароль' : 'Password'"
+                  :title="lang === 'Ru' ? 'Пароль' : 'Құпиясөз'"
                   :type="'password'"
                 />
                 <label for="password">
@@ -47,21 +47,21 @@
                 <div class="auth-login_checkbox">
                   <input type="checkbox" id="scales" name="scales" checked />
                   <label for="scales">
-                    {{ lang === "Ru" ? `Запомнить меня` : `Remember me` }}
+                    {{ lang === "Ru" ? `Запомнить меня` : `Мені есте сақтау` }}
                   </label>
                 </div>
                 <router-link to="/recovery" class="auth-login_forgot">
-                  {{ lang === "Ru" ? `Забыли пароль ?` : `Forgot password ?` }}
+                  {{ lang === "Ru" ? `Забыли пароль ?` : `Құпия сөзіңізді ұмыттыңыз ба ?` }}
                 </router-link>
               </div>
               <button style="margin: 2vh 0" class="auth-btn">
-                {{ lang === "Ru" ? `Войти` : `Login` }}
+                {{ lang === "Ru" ? `Войти` : `Кіру` }}
               </button>
               <span v-if="error" style="color: red; display: block">
                 {{
                   lang === "Ru"
                     ? `Неправильный логин или пароль`
-                    : `Wrong login or password`
+                    : `Логин немесе құпия сөз қате`
                 }}
               </span>
             </form>
@@ -69,14 +69,14 @@
         </div>
         <div class="auth-registration">
           <div class="auth-titile">
-            {{ lang === "Ru" ? `Регистрация` : `Registration` }}
+            {{ lang === "Ru" ? `Регистрация` : `Регистрация` }}
           </div>
           <div class="auth-registration_text">
             <p>
               {{
                 lang === "Ru"
                   ? `Зарегистрироваться легко! С учетной записью вы можете:`
-                  : `Registering is easy! With an account, you can:`
+                  : `Тіркелу оңай! Есептік жазба арқылы сіз:`
               }}
             </p>
             <ul>
@@ -84,35 +84,35 @@
                 {{
                   lang === "Ru"
                     ? `Сохраняйте понравившиеся дизайны`
-                    : `Save your favorite designs`
+                    : `Таңдаулы дизайндарыңызды сақтаңыз`
                 }}
               </li>
               <li>
                 {{
                   lang === "Ru"
                     ? `Создавать дизайнерские коллекции`
-                    : `Create designer collections`
+                    : `Дизайнер топтамаларын жасаңыз`
                 }}
               </li>
               <li>
                 {{
                   lang === "Ru"
                     ? `Просмотрите историю заказов`
-                    : `View your order history`
+                    : `Тапсырыс тарихын қараңыз`
                 }}
               </li>
               <li>
                 {{
                   lang === "Ru"
                     ? `Продавайте свои работы и зарабатывайте комиссионные`
-                    : `Sell your work and earn commission`
+                    : `Жұмысыңызды сатыңыз және комиссия алыңыз`
                 }}
               </li>
             </ul>
           </div>
           <router-link to="/registration">
             <button class="auth-btn">
-              {{ lang === "Ru" ? `Зарегистрироваться` : `Register` }}
+              {{ lang === "Ru" ? `Зарегистрироваться` : `Тіркелу` }}
             </button>
           </router-link>
         </div>

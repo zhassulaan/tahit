@@ -15,17 +15,19 @@ extend("email", { ...email, message: "email" });
 
 console.log(lang, "language");
 
-let requiredTemp = lang === "Ru" ? "Заполните поле" : "Fill in the field";
+let requiredTemp = lang === "Ru" ? "Заполните поле" : "Өрісті толтырыңыз";
 let passTemp =
   lang === "Ru"
     ? "Пароль должен содержать 5 символов"
-    : "Password must contain 5 characters";
+    : "Құпиясөз 5 таңбадан тұруы керекs";
 
-let phoneTemp = lang === "Ru" ? "Введите номер телефона" : "Enter phone number";
+let phoneTemp =
+  lang === "Ru" ? "Введите номер телефона" : "Телефон нөмірін енгізіңіз";
 let emailTemp =
-  lang === "Ru" ? "E-mail введен неправильно" : "Email entered incorrectly";
-let minTemp =
-  lang === "Ru" ? "Введите более 4 цифр" : "Please enter more than 4 digits";
+  lang === "Ru"
+    ? "E-mail введен неправильно"
+    : "Электрондық пошта қате енгізілді";
+let minTemp = lang === "Ru" ? "Введите более 4 цифр" : "4 саннан көп енгізіңіз";
 
 // Override the default message.
 extend("required", {

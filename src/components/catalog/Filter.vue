@@ -2,7 +2,7 @@
   <div class="filter">
     <div class="filter-block">
       <div class="filter-title">
-        {{ $cookie.get("lang") === "Ru" ? `Фильтры` : `Filters` }}
+        {{ $cookie.get("lang") === "Ru" ? `Фильтры` : `Фильтрлер` }}
       </div>
       <div class="filter-close" @click="close()">X</div>
     </div>

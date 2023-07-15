@@ -1,3 +1,5 @@
+/** @format */
+
 import Vue from "vue";
 import { instance } from "@/plugins/axios";
 
@@ -55,6 +57,7 @@ const endpoints = {
   deleteCart: "api/orders/update_cart_item/",
   changeCart: "api/orders/update_cart_item/",
   currentOrder: "api/orders/get_current_user_order/",
+  createOrder: "api/orders/create_order/",
 
   //search
   getSearch: "/api/main/filter/",
@@ -361,9 +364,6 @@ const api = {
           this.refresh();
         }
       });
-    if (response.status === 200 || response.status === 201) {
-      Vue.route.push("/basket");
-    }
     return response.data;
   },
 
@@ -521,6 +521,20 @@ const api = {
         }
       });
     return response.data;
+  },
+
+  async createOrder(data) {
+    const response = await instance
+      .post(
+        endpoints.createOrder + Vue.cookie.get("lang").toLowerCase() + "/",
+        data
+      )
+      .catch((err) => {
+        if (err.response.status === 401) {
+          this.refresh();
+        }
+      });
+    return response;
   },
 
   async getNewsById(id) {

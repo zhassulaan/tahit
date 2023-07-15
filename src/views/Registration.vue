@@ -7,7 +7,7 @@
           {{
             $cookie.get("lang") === "Ru"
               ? "Ваши данные сохранены"
-              : "Your data has been saved"
+              : "Деректеріңіз сақталды"
           }}
         </h3>
         <button
@@ -25,42 +25,51 @@
     </div>
     <div id="SMS" class="smsForm SMS" v-if="sms">
       <div class="registration-title">
-        {{ lang === "Ru" ? `Регистрация` : `Registration` }}
+        {{ lang === "Ru" ? `Регистрация` : `Тіркеу` }}
       </div>
       <p>
         {{
           lang === "Ru"
             ? "На ваш номер телефона придет код SMS"
-            : "SMS code will be sent to your phone number"
+            : "Сіздің телефон нөміріңізге SMS коды жіберіледі"
         }}
       </p>
       <p>
         {{
-          lang === "Ru" ? "Вы не получили код?" : `You didn't receive a code?`
+          lang === "Ru" ? "Вы не получили код?" : `Сіз кодты алған жоқсыз ба?`
         }}
       </p>
       <button class="smsForm-btn" v-if="timer > 0">
-        {{ lang === "RU" ? "Отправить повторно через" : "Resend via" }}
+        {{ lang === "Ru" ? "Отправить повторно через" : "Қайта жіберу" }}
         {{ timer }}
       </button>
       <button class="smsForm-btn" @click="handleSendSMS" v-else>
-        {{ lang === "RU" ? "Отправить повторно через" : "Resend via" }}
-        {{ timer }}
+        {{ lang === "Ru" ? "Отправить повторно" : "Қайта жіберу" }}
       </button>
       <div class="registration-form_one">
         <app-input
           v-model="smsInput"
           :type="'number'"
-          :title="lang === 'Ru' ? 'Код SMS' : `SMS code`"
+          :title="lang === 'Ru' ? 'Код SMS' : `Код SMS`"
         />
         <button @click="regFunc()" class="registration-btn mt-10">
-          {{ lang === "Ru" ? `Зарегистрироваться` : `Register` }}
+          {{ lang === "Ru" ? `Зарегистрироваться` : `Тіркелу` }}
         </button>
       </div>
+      <span
+        v-if="error"
+        style="color: red; display: block; text-align: center; margin-top: 10px"
+      >
+        {{
+          lang === "Ru"
+            ? `Данный номер уже используется`
+            : `Бұл нөмір бұрыннан қолданыста`
+        }}
+      </span>
     </div>
     <div class="container" v-else>
       <div class="registration-title">
-        {{ lang === "Ru" ? `Регистрация` : `Registration` }}
+        {{ lang === "Ru" ? `Регистрация` : `Тіркеу` }}
       </div>
       <p
         style="
@@ -73,33 +82,33 @@
         {{
           lang === "Ru"
             ? "В первую очередь необходимо отметить, кем вы являетесь!"
-            : "First of all, you need to note who you are."
+            : "Ең алдымен, сіз кім екеніңізді атап өтуіңіз керек!"
         }}
       </p>
       <div class="registration-radio">
         <div class="registration-radio_item">
           <input type="radio" id="radio1" value="1" v-model="formtab" />
           <label for="radio1">
-            {{ lang === "Ru" ? `Розничный клиент` : `Retail client` }}
+            {{ lang === "Ru" ? `Розничный клиент` : `Бөлшек тұтынушы` }}
           </label>
         </div>
         <div class="registration-radio_item">
           <input type="radio" id="radio2" value="2" v-model="formtab" />
           <label for="radio2"
-            >{{ lang === "Ru" ? `Салон штор` : `Salon curtains` }}
+            >{{ lang === "Ru" ? `Салон штор` : `Салон перделері` }}
           </label>
         </div>
         <div class="registration-radio_item">
           <input type="radio" id="radio3" value="3" v-model="formtab" />
           <label for="radio3">{{
-            lang === "Ru" ? `Текстильный декоратор` : `Textile decorator`
+            lang === "Ru" ? `Текстильный декоратор` : `Тоқыма декораторы`
           }}</label>
         </div>
         <div class="registration-radio_item">
           <input type="radio" id="radio4" value="4" v-model="formtab" />
           <label for="radio4">
             {{
-              lang === "Ru" ? `Графический дизайнер` : `Graphic Designer`
+              lang === "Ru" ? `Графический дизайнер` : `Графикалық дизайнер`
             }}</label
           >
         </div>
@@ -110,7 +119,7 @@
             <validation-provider v-slot="{ errors }" rules="required">
               <app-input
                 v-model="regData.first_name"
-                :title="lang === 'Ru' ? 'Имя' : `Name`"
+                :title="lang === 'Ru' ? 'Имя' : `Аты`"
               />
               <label for="name">
                 <span style="color: red">{{ errors[0] }}</span></label
@@ -121,7 +130,7 @@
             <validation-provider v-slot="{ errors }" rules="required">
               <app-input
                 v-model="regData.last_name"
-                :title="lang === 'Ru' ? 'Фамилия' : `Surname`"
+                :title="lang === 'Ru' ? 'Фамилия' : `Тегі`"
               />
               <label for="secondName">
                 <span style="color: red">{{ errors[0] }}</span></label
@@ -154,7 +163,7 @@
                     ? '+7 (###) ###-##-##'
                     : '+375 ## ### ## ##'
                 "
-                :title="lang === 'Ru' ? 'Телефон' : `Phone`"
+                :title="lang === 'Ru' ? 'Телефон' : `Телефон`"
                 :placeholder="
                   countrys === 'KZ' || countrys === 'RU'
                     ? '+7 (###) ###-##-##'
@@ -171,7 +180,7 @@
               <app-input
                 v-model="regData.password"
                 :type="'password'"
-                :title="lang === 'Ru' ? 'Пароль' : `Password`"
+                :title="lang === 'Ru' ? 'Пароль' : `Құпиясөз`"
               />
               <label for="password">
                 <span style="color: red">{{ errors[0] }}</span></label
@@ -184,7 +193,7 @@
                 v-model="repeatPassword"
                 :type="'password'"
                 :title="
-                  lang === 'Ru' ? 'Подтвердить пароль' : `Confirm the password`
+                  lang === 'Ru' ? 'Подтвердить пароль' : `Құпиясөзді Растау`
                 "
               />
               <label for="password">
@@ -197,7 +206,7 @@
           <div class="registration-form_two">
             <validation-provider v-slot="{ errors }" rules="required">
               <app-select
-                :title="lang === 'Ru' ? 'Страна' : `Country`"
+                :title="lang === 'Ru' ? 'Страна' : `Мемлекет`"
                 :label="inputValue.name !== '' ? inputValue.name : ''"
                 :items="country"
                 @input="changeInput"
@@ -215,7 +224,7 @@
               rules="required"
             >
               <app-select
-                :title="lang === 'Ru' ? 'Город' : `City`"
+                :title="lang === 'Ru' ? 'Город' : `Қала`"
                 :label="inputCity.name === '' ? '' : inputCity.name"
                 :items="cities"
                 @input="changeInputCity"
@@ -229,7 +238,7 @@
           <div class="registration-form_one" v-if="formtab == '3'">
             <app-input
               v-model="regData.addresses[0].saloon_name"
-              :title="lang === 'Ru' ? 'Название Студии' : `Studio name`"
+              :title="lang === 'Ru' ? 'Название Студии' : `Студия атауы`"
             />
             <p style="color: red; font-weight: 500" v-if="saloon_nameErr">
               {{ saloon_nameErr }}
@@ -238,7 +247,7 @@
           <div class="registration-form_one" v-if="formtab == '2'">
             <app-input
               v-model="regData.addresses[0].saloon_name"
-              :title="lang === 'Ru' ? 'Название Салона' : `Saloon Name`"
+              :title="lang === 'Ru' ? 'Название Салона' : `Салон атауы`"
             />
             <p style="color: red; font-weight: 500" v-if="saloon_nameErr">
               {{ saloon_nameErr }}
@@ -250,7 +259,7 @@
               :title="
                 lang === 'Ru'
                   ? 'Название дизайн студии'
-                  : `Name of design studio`
+                  : `Дизайн студиясының атауы`
               "
             />
           </div>
@@ -262,8 +271,8 @@
                 lang === "Ru"
                   ? `Регистрируясь, я подтверждаю, что понимаю и согласен с Условиями
               обслуживания`
-                  : `By registering, I confirm that I understand and agree to the Terms
-               service`
+                  : `Тіркелу арқылы мен Шарттарды түсінетінімді және келісетінімді растаймын
+               қызмет көрсету`
               }}
             </p>
           </div>
@@ -276,16 +285,16 @@
               {{
                 lang === "Ru"
                   ? `Данный номер уже используется`
-                  : `Phone number is already exist`
+                  : `Бұл нөмір бұрыннан қолданыста`
               }}
             </span>
           </label>
           <div class="registration-form_one">
             <button @click="handleSendSMS" class="registration-btn">
-              {{ lang === "Ru" ? `Получить код SMS` : `Send SMS` }}
+              {{ lang === "Ru" ? `Получить код SMS` : `SMS кодын алыңыз` }}
             </button>
             <!-- <button @click="regFunc()" class="registration-btn">
-                {{ lang === "Ru" ? `Зарегистрироваться` : `Register` }}
+                {{ lang === "Ru" ? `Зарегистрироваться` : `Тіркелу` }}
               </button> -->
           </div>
         </form>
@@ -311,7 +320,7 @@ export default {
   },
   data() {
     return {
-      error: false,
+      error: "",
       lang: this.$cookie.get("lang"),
       sms: false,
       countrys: localStorage.getItem("country"),
@@ -455,33 +464,23 @@ export default {
               this.regData.group = "Графический дизайнер";
               this.regData.role = 5;
             }
-            if (
-              (this.formtab === "2" &&
-                this.regData.addresses[0].saloon_name !== "") ||
-              (this.formtab === "3" &&
-                this.regData.addresses[0].saloon_name !== "")
-            ) {
-              api
-                .register(this.regData)
-                .then((res) => {
-                  this.error = false;
-                  this.$cookie.set("token", res.token, { expires: 7 });
-                  this.$cookie.set("refresh", res.refresh, { expires: 7 });
-                  // if (response.status === 400) {
-                  //   alert("Введенный email уже занят");
-                  // }
-                })
-                .catch((err) => {
-                  if (err.response.status === 500) {
-                    this.error = true;
-                  }
-                });
-            } else {
-              this.saloon_nameErr =
-                this.lang === "Ru"
-                  ? "Это поле обязательно для данной роли"
-                  : "This field is required for this role";
-            }
+
+            api
+              .register(this.regData)
+              .then((res) => {
+                this.error = false;
+                this.$cookie.set("token", res.token, { expires: 7 });
+                this.$cookie.set("refresh", res.refresh, { expires: 7 });
+                // if (response.status === 400) {
+                //   alert("Введенный email уже занят");
+                // }
+              })
+              .catch((err) => {
+                if (err.response.status === 400) {
+                  this.error =
+                    "Пользователь с таким номером телефона уже существует!";
+                }
+              });
           });
       }
     },

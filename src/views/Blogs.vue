@@ -1,3 +1,5 @@
+<!-- @format -->
+
 <template>
   <div class="blog">
     <div class="container">
@@ -5,7 +7,7 @@
         <div class="blog-content">
           <div class="blog-content_top">
             <div class="blog-content_title">
-              {{ $cookie.get("lang") === "Ru" ? `Блог` : `Blog` }}
+              {{ $cookie.get("lang") === "Ru" ? `Блог` : `Блог` }}
             </div>
           </div>
           <div class="blog-content_posts">
@@ -13,8 +15,7 @@
               v-for="(blog, index) in blogs"
               :key="blog.id"
               :blog="blog"
-              :index="index % 2 !== 0 ? count++ : count"
-            />
+              :index="index" />
           </div>
           <!-- <button class="blog-content__more" @click="blogs.push(...blogs)">
             Показать еще
@@ -89,8 +90,14 @@ input[type="number"] {
   &-content {
     width: 100%;
     &_title {
+      font-family: "Playfair Display";
+      font-style: normal;
+      font-weight: 400;
       font-size: rem(42);
-      margin-bottom: rem(32);
+      line-height: rem(56);
+      text-align: center;
+      color: #182040;
+      margin-bottom: rem(50);
     }
     &__more {
       background-color: #f7bd7f;
@@ -118,10 +125,12 @@ input[type="number"] {
       }
     }
     &_posts {
-      display: flex;
-      flex-wrap: wrap;
-      // gap: rem(50);
-      justify-content: space-between;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      display: grid;
+      gap: 15px;
+      @media (max-width: 900px) {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+      }
     }
     &_top-filter {
       display: none;

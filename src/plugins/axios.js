@@ -1,3 +1,5 @@
+/** @format */
+
 // import BaseApi from "@/api";
 import Vue from "vue";
 import axios from "axios";
@@ -8,7 +10,7 @@ fetch("https://ipinfo.io/json?token=70abcff895bbc8")
     localStorage.setItem("country", jsonResponse.country)
   );
 
-const baseURL = process.env.BASE_API_URL || "https://tahit-back.zoom-app.kz/";
+const baseURL = process.env.BASE_API_URL || "https://api.tahit.kz/";
 
 // Aplication
 const headers = {

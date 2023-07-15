@@ -3,10 +3,10 @@
     <div class="mobile-designersAbout__container">
       <div class="designersAbout__headerWrapper">
         <h2 class="designersAbout__header">
-          {{ lang === "Ru" ? "Дизайнеры о нас" : "Designers about us" }}
+          {{ lang === "Ru" ? "Дизайнеры о нас" : "Біз туралы дизайнерлер" }}
         </h2>
         <h1 class="designersAbout__reviewImg comforter">
-          {{ lang === "Ru" ? "Отзывы профессионалов" : "Professional reviews" }}
+          {{ lang === "Ru" ? "Отзывы профессионалов" : "Кәсіби шолулар" }}
         </h1>
       </div>
       <div class="designersContent" v-if="about">
@@ -37,10 +37,10 @@
     <div class="designersAbout__container">
       <div class="designersAbout__headerWrapper">
         <h2 class="designersAbout__header">
-          {{ lang === "Ru" ? "Дизайнеры о нас" : "Designers about us" }}
+          {{ lang === "Ru" ? "Дизайнеры о нас" : "Біз туралы дизайнерлер" }}
         </h2>
         <h1 class="designersAbout__reviewImg comforter">
-          {{ lang === "Ru" ? "Отзывы профессионалов" : "Professional reviews" }}
+          {{ lang === "Ru" ? "Отзывы профессионалов" : "Кәсіби шолулар" }}
         </h1>
       </div>
       <div class="designersContent" v-if="about">

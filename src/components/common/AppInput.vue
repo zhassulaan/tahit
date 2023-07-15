@@ -24,13 +24,16 @@ export default {
   name: "AppInput",
   data() {
     return {
-      input: this.placeholder,
+      input: this.text || "",
     };
   },
   props: {
     id: {
       type: String,
       required: false,
+    },
+    text: {
+      type: String,
     },
     disabled: {
       type: Boolean,

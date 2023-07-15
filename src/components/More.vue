@@ -10,7 +10,7 @@
           {{ baner.text }}
         </p>
         <button class="moreBtn">
-          {{ $cookie.get("lang") === "Ru" ? "Узнать больше" : "See More" }}
+          {{ $cookie.get("lang") === "Ru" ? "Узнать больше" : "Көбірек көру" }}
         </button>
       </div>
     </div>

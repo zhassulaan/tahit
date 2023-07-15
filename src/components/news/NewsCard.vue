@@ -15,7 +15,7 @@
           :to="{ name: 'FullNews', params: { id: item.id } }"
           style="text-decoration: underline; font-weight: 600; color: #f7bd7f"
         >
-          {{ $cookie.get("lang") === "Ru" ? `Узнать больше` : `See more` }}
+          {{ $cookie.get("lang") === "Ru" ? `Узнать больше` : `Көбірек көру` }}
         </router-link>
         <p class="news-card__date">{{ item.updated_at.split("T")[0] }}</p>
       </div>

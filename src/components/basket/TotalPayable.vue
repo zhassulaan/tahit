@@ -1,9 +1,13 @@
+<!-- @format -->
+
 <template>
   <div class="total-payable">
     <div class="total-payable__top">
       <div class="total-payable__title">
         {{
-          $cookie.get("lang") === "Ru" ? `Итого к оплате:` : `Total payable:`
+          $cookie.get("lang") === "Ru"
+            ? `Итого к оплате:`
+            : `Төлемнің жалпы сомасы:`
         }}
       </div>
       <div class="total-payable__price">
@@ -14,14 +18,14 @@
       {{
         $cookie.get("lang") === "Ru"
           ? `Обратите внимание: Данная цена указана без учета доставки.`
-          : `Please note: This price does not include shipping.`
+          : `Назар аударыңыз: бұл бағаға жеткізу кірмейді.`
       }}
     </p>
     <button @click="$emit('tab')" class="total-payable__btn">
       {{
         $cookie.get("lang") === "Ru"
           ? `Расчет стоимости доставки`
-          : `Shipping cost calculation`
+          : `Жеткізу құнын есептеу`
       }}
     </button>
   </div>

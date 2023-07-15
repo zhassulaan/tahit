@@ -16,7 +16,7 @@
                 <app-input
                   v-model="password.password"
                   :type="'password'"
-                  :title="lang === 'Ru' ? 'Старый пароль' : 'Old password'"
+                  :title="lang === 'Ru' ? 'Старый пароль' : 'Ескі Құпиясөз'"
                   :placeholder="''"
                 />
                 <label for="password">
@@ -32,7 +32,7 @@
                 <app-input
                   v-model="password.new_password"
                   :type="'password'"
-                  :title="lang === 'Ru' ? 'Новый пароль' : 'New password'"
+                  :title="lang === 'Ru' ? 'Новый пароль' : 'Жаңа Құпиясөз'"
                   :placeholder="''"
                 />
                 <label for="password">
@@ -42,9 +42,9 @@
             </div>
           </div>
           <p v-if="error" style="color: red; text-align: start">
-            {{ lang === "Ru" ? `Неправильный пароль ` : `Wrong password` }}
+            {{ lang === "Ru" ? `Неправильный пароль ` : `Құпиясөз қате` }}
           </p>
-          <button>{{ lang === "Ru" ? `Сохранить` : `Save` }}</button>
+          <button>{{ lang === "Ru" ? `Сохранить` : `Сақтау` }}</button>
         </form>
       </validation-observer>
     </div>

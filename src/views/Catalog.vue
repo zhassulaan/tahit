@@ -1,3 +1,5 @@
+<!-- @format -->
+
 <template>
   <div class="catalog">
     <div class="container">
@@ -9,11 +11,11 @@
         <div class="catalog-content">
           <div class="catalog-content_top">
             <div class="catalog-content_title">
-              {{ lang === "Ru" ? `Каталог` : `Catalog` }}
+              {{ lang === "Ru" ? `Каталог` : `Каталог` }}
             </div>
             <div class="catalog-content_sort">
               <div class="catalog-content_sort-title">
-                {{ lang === "Ru" ? "Сортировка" : "Sort by" }}:
+                {{ lang === "Ru" ? "Сортировка" : "Сұрыптау" }}:
               </div>
               <div class="catalog-content_sort-items">
                 <div
@@ -23,24 +25,22 @@
                     !filters.order_by
                       ? 'catalog-content_sort-item  isActive'
                       : ''
-                  "
-                >
-                  {{ lang === "Ru" ? "по умолчанию" : "default" }}
+                  ">
+                  {{ lang === "Ru" ? "по умолчанию" : "Әдепкі" }}
                 </div>
                 <div
-                  @click="handleSort('popularity')"
+                  @click="handleSort('-popularity')"
                   style="cursor: pointer"
                   :class="
                     filters.order_by
                       ? 'catalog-content_sort-item  isActive'
                       : ''
-                  "
-                >
-                  {{ lang === "Ru" ? "по популярности" : "popularity" }}
+                  ">
+                  {{ lang === "Ru" ? "по популярности" : "Танымалдығы бойынша" }}
                 </div>
               </div>
               <div class="catalog-content_top-filter" @click="filterMob = true">
-                {{ lang === "Ru" ? `Фильтр` : `Filter` }}
+                {{ lang === "Ru" ? `Фильтр` : `Фильтрлер` }}
               </div>
             </div>
           </div>
@@ -48,8 +48,7 @@
             <ProductCard
               v-for="(product, index) in products"
               :key="index"
-              :item="product"
-            />
+              :item="product" />
           </div>
           <div class="catalog-content_products" v-else>
             <div class="catalog-content__loader" v-for="i in 10" :key="i"></div>
@@ -65,8 +64,7 @@
             :prev-text="'<'"
             :next-text="'>'"
             :container-class="'pagination'"
-            class="qwe"
-          >
+            class="qwe">
           </paginate>
         </div>
       </div>
@@ -179,9 +177,15 @@ input[type="number"] {
       font-family: "Playfair Display";
       font-style: normal;
       font-weight: 400;
-      line-height: rem(56);
+      font-size: 2.625rem;
+      line-height: 3.5rem;
       color: #182040;
-      font-size: rem(42);
+      // font-family: "Playfair Display";
+      // font-style: normal;
+      // font-weight: 400;
+      // line-height: rem(56);
+      // color: #182040;
+      // font-size: rem(42);
     }
     &_sort {
       font-family: "Lato Bold";
@@ -255,9 +259,7 @@ input[type="number"] {
   .catalog {
     &-content {
       &_products {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-gap: 20px !important;
+        gap: 20px !important;
       }
     }
   }
@@ -284,6 +286,8 @@ input[type="number"] {
     gap: 10px;
     justify-content: space-between;
     align-items: center;
+  }
+  .catalog-content_products {
   }
 }
 
@@ -315,6 +319,11 @@ input[type="number"] {
 @media (max-width: 600px) {
   .product {
     width: 100%;
+  }
+  .catalog-content_products {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
   }
 }
 @media (max-width: 500px) {

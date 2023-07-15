@@ -75,9 +75,9 @@ export default {
     height: 100%;
     max-height: rem(350);
 
-    // @media (max-width: 500px) {
-    //   max-height: rem(450);
-    // }
+    @media (max-width: 500px) {
+      max-height: rem(450);
+    }
 
     // height: rem(412);
     img {
@@ -112,12 +112,14 @@ export default {
   }
 }
 @media (max-width: 767px) {
-  .product {
+  .product-form_two-col {
     width: 100%;
   }
 }
 
 @media screen and (max-width: 500px) {
-  
+  .product {
+    width: 100%;
+  }
 }
 </style>

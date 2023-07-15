@@ -10,7 +10,7 @@
           {{
             $cookie.get("lang") === "Ru"
               ? "Ваш пароль изменен"
-              : "Your password has been changed"
+              : "Құпиясөзіңіз өзгертілді"
           }}
         </h3>
       </div>
@@ -18,7 +18,7 @@
     <div class="container">
       <div class="recovery">
         <div class="registration-title">
-          {{ lang === "Ru" ? `Восстановление пароля` : `Password Recovery` }}
+          {{ lang === "Ru" ? `Восстановление пароля` : `Құпиясөзді қалпына келтіру` }}
         </div>
         <div class="smsForm" v-if="tab === 1">
           <app-input
@@ -28,7 +28,7 @@
                 ? '+7 (###) ###-##-##'
                 : '+375 ## ### ## ##'
             "
-            :title="lang === 'Ru' ? 'Телефон' : `Phone`"
+            :title="lang === 'Ru' ? 'Телефон' : `Телефон`"
             :placeholder="
               countrys === 'KZ' || countrys === 'RU'
                 ? '+7 (###) ###-##-##'
@@ -36,7 +36,7 @@
             "
           />
           <button @click="handleSendSMS" class="registration-btn mt-20">
-            {{ lang === "Ru" ? `Отправить код` : `Send SMS` }}
+            {{ lang === "Ru" ? `Отправить код` : `Кодты жіберу` }}
           </button>
         </div>
         <div class="smsForm" v-else-if="tab === 2">
@@ -44,28 +44,28 @@
             {{
               lang === "Ru"
                 ? "На ваш номер телефона придет код SMS"
-                : "An SMS code will be sent to your phone number"
+                : "Сіздің телефон нөміріңізге SMS коды жіберіледі"
             }}
           </p>
           <p>
             {{
               lang === "Ru"
                 ? "Вы не получили код?"
-                : `You didn't receive a code?`
+                : `Сіз кодты алған жоқсыз ба?`
             }}
           </p>
           <button class="smsForm-btn" v-if="timer > 0">
-            {{ lang === "Ru" ? `Отправить повторно через` : `Resend via` }}
+            {{ lang === "Ru" ? `Отправить повторно через` : `Қайта жіберу` }}
             {{ timer }}
           </button>
           <button @click="handleSendSMS" class="smsForm-btn" v-if="timer === 0">
-            {{ lang === "Ru" ? `Отправить повторно` : `Resend` }}
+            {{ lang === "Ru" ? `Отправить повторно` : `Қайта жіберу` }}
           </button>
           <div class="registration-form_one">
             <app-input
               v-model="smsInput"
               :type="'number'"
-              :title="lang === 'Ru' ? 'Код SMS' : `SMS code`"
+              :title="lang === 'Ru' ? 'Код SMS' : `Код SMS`"
             />
             <span
               style="
@@ -80,7 +80,7 @@
               {{ verifyError }}
             </span>
             <button @click="verifySms" class="registration-btn mt-10">
-              {{ lang === "Ru" ? `Подтвердить` : `Verify` }}
+              {{ lang === "Ru" ? `Подтвердить` : `Растау` }}
             </button>
           </div>
         </div>
@@ -88,16 +88,16 @@
           <app-input
             v-model="password"
             :type="'password'"
-            :title="lang === 'Ru' ? 'Пароль' : `Password`"
+            :title="lang === 'Ru' ? 'Пароль' : `Құпиясөз`"
           />
           <app-input
             v-model="password2"
             :type="'password'"
-            :title="lang === 'Ru' ? 'Повторите Пароль' : `Repeat Password`"
+            :title="lang === 'Ru' ? 'Повторите Пароль' : `Құпиясөзді қайталаңыз`"
             class="mt-10"
           />
           <button @click="resetPass" class="registration-btn mt-20">
-            {{ lang === "Ru" ? `Сохранить пароль` : `Save password` }}
+            {{ lang === "Ru" ? `Сохранить пароль` : `Құпиясөзді сақтау` }}
           </button>
         </div>
       </div>

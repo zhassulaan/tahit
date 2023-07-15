@@ -1,3 +1,5 @@
+<!-- @format -->
+
 <template>
   <div class="header__navBurger" :class="{ isActive: burger }">
     <button @click="closeBurger()" class="burger-menu-close">
@@ -5,59 +7,55 @@
     </button>
     <ul class="header__navBurgerItems">
       <li @click="route('about')" class="header__navBurgerItem">
-        {{ lang === "Ru" ? "О компании" : "Company" }}
+        {{ lang === "Ru" ? "О компании" : "Компания жайлы" }}
       </li>
       <router-link to="/catalog" tag="li" class="header__navBurgerItem">
-        {{ lang === "Ru" ? "Каталог" : "Catalog" }}
+        {{ lang === "Ru" ? "Каталог" : "Каталог" }}
       </router-link>
       <router-link to="/news" tag="li" class="header__navBurgerItem">
-        {{ lang === "Ru" ? "Новости" : "News" }}
+        {{ lang === "Ru" ? "Новости" : "Жаңалықтар" }}
       </router-link>
       <router-link to="/blogs" tag="li" class="header__navBurgerItem">
-        {{ lang === "Ru" ? "Блог" : "Blog" }}
+        {{ lang === "Ru" ? "Блог" : "Блог" }}
       </router-link>
       <li @click="route('designersAbout')" class="header__navBurgerItem">
-        {{ lang === "Ru" ? "Дизайнеры о нас" : "Designers about us" }}
+        {{ lang === "Ru" ? "Дизайнеры о нас" : "Біз туралы дизайнерлер" }}
       </li>
       <router-link to="/contacts" tag="li" class="header__navBurgerItem">
-        {{ lang === "Ru" ? "Контакты" : "Contacts" }}
+        {{ lang === "Ru" ? "Контакты" : "Контактілер" }}
       </router-link>
     </ul>
     <div style="display: flex; align-items: center; position: relative">
       <div class="language" @click="select = !select">
         <img
           style="width: 28px"
-          src="@/assets/main/english.svg"
+          src="@/assets/kz.svg"
           alt=""
-          v-if="lang === 'En'"
-        />
+          v-if="lang === 'En'" />
         <img
           v-else
           style="width: 28px"
           src="@/assets/Flag_of_Russia.svg.png"
-          alt=""
-        />
+          alt="" />
 
         <p style="font-size: 15px" class="language__text">{{ lang }}</p>
       </div>
       <ul class="lang-select2" v-if="select">
         <button
           @click="langSelect('Ru')"
-          class="select__item lang-select__item"
-        >
+          class="select__item lang-select__item">
           Ru
         </button>
         <button
           @click="langSelect('En')"
-          class="select__item lang-select__item"
-        >
-          En
+          class="select__item lang-select__item">
+          Kz
         </button>
       </ul>
     </div>
     <div class="uploadBtn">
       <p @click="route('design')" class="uploadBtn__content">
-        {{ lang === "Ru" ? "Загрузить свой дизайн" : "Upload your design" }}
+        {{ lang === "Ru" ? "Загрузить свой дизайн" : "Дизайнды жүктеy" }}
       </p>
     </div>
   </div>
@@ -119,7 +117,10 @@ export default {
   },
 };
 </script>
-<style scoped>
+<style lang="scss" scoped>
+@import "@/assets/scss/functions.scss";
+@import "@/assets/scss/media.scss";
+
 .language {
   margin-left: 0;
 }
@@ -147,6 +148,9 @@ p.uploadBtn__content {
 li.header__navBurgerItem {
   margin: 30px 0;
   color: #656c72;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 160%;
 }
 ul.header__navBurgerItems {
   text-align: left;

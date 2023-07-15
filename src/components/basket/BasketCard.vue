@@ -1,8 +1,12 @@
+<!-- @format -->
+
 <template>
   <div class="basket-card">
     <div class="basket-card__inner">
       <div class="basket-card__info">
-        <img class="basket-card__img" :src="item.basis.template" alt="" />
+        <div class="relative">
+          <img class="basket-card__img" :src="item.basis.template" alt="" />
+        </div>
         <div class="basket-card__content">
           <h6 class="basket-card__title">{{ item.basis.name }}</h6>
           <div class="basket-card__print">
@@ -10,14 +14,14 @@
               {{
                 $cookie.get("lang") === "Ru"
                   ? `Основа для принта`
-                  : `Base for print`
+                  : `Басып шығару үшін негіз`
               }}
             </p>
             <p class="basket-card__value">{{ item.print.comment }}</p>
           </div>
           <div class="basket-card__size">
             <p class="basket-card__label">
-              {{ $cookie.get("lang") === "Ru" ? `Размер` : `Size` }}
+              {{ $cookie.get("lang") === "Ru" ? `Размер` : `Өлшем` }}
             </p>
             <p class="basket-card__value">
               {{ item.length }}
@@ -29,14 +33,13 @@
           <div class="basket-card__weight">
             <p class="basket-card__label">Вес:</p>
             <p class="basket-card__value">
-              {{ item.basis.weight }} {{ item.basis.weight_unit }}
+              {{ item.weight }} {{ item.basis.weight_unit }}
             </p>
           </div>
           <count-input
             :itemCount="item.quantity"
             v-model="count"
-            :disabled="true"
-          />
+            :disabled="true" />
         </div>
       </div>
       <div class="basket-card__right">
@@ -46,8 +49,7 @@
               name: 'Product',
               params: { id: item.print.id },
               query: { basis: JSON.stringify(item) },
-            }"
-          >
+            }">
             <button class="basket-card__edit">
               <img src="@/assets/img/icons/edit.svg" alt="" />
             </button>

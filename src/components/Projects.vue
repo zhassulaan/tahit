@@ -2,10 +2,10 @@
   <div class="projects">
     <div class="projects__container">
       <h2 class="projects__header">
-        {{ lang === "Ru" ? "Наши продукты" : "Our products" }}
+        {{ lang === "Ru" ? "Наши продукты" : "Біздің өнімдер" }}
       </h2>
       <h2 class="projects__subHeader comfort">
-        {{ lang === "Ru" ? "Эксклюзивный дизайн" : "Exclusive Design" }}
+        {{ lang === "Ru" ? "Эксклюзивный дизайн" : "Эксклюзивті дизайн" }}
       </h2>
       <div>
         <div v-for="item in projectImages" :key="item.id">

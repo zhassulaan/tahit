@@ -27,7 +27,7 @@
           >
             <img src="@/assets/office/pencil.png" alt="" />
             <p>
-              {{ lang === "Ru" ? `Редактировать` : `Edit` }}
+              {{ lang === "Ru" ? `Редактировать` : `Өзгерту` }}
             </p>
           </div>
           <div
@@ -37,7 +37,7 @@
             class="address__delete"
           >
             <img src="@/assets/office/Delete.png" alt="" />
-            <p>{{ lang === "Ru" ? `Удалить` : `Delete` }}</p>
+            <p>{{ lang === "Ru" ? `Удалить` : `Жою` }}</p>
           </div>
         </div>
       </div>
@@ -77,7 +77,7 @@
         </svg>
 
         <p>
-          {{ lang === "Ru" ? `Добавить адрес` : `Add address` }}
+          {{ lang === "Ru" ? `Добавить адрес` : `Мекенжайды қосу` }}
         </p>
       </div>
     </div>

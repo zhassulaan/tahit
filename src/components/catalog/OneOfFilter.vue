@@ -22,7 +22,7 @@
         :for="title"
         class="filter-block_value"
       >
-        {{ $cookie.get("lang") === "Ru" ? `Все` : `All` }}
+        {{ $cookie.get("lang") === "Ru" ? `Все` : `Бәрі` }}
       </label>
       <div v-for="value in filter" :key="value.slug">
         <input

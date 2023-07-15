@@ -1,3 +1,5 @@
+<!-- @format -->
+
 <template>
   <div class="product">
     <div class="container">
@@ -14,28 +16,25 @@
                 :title="inputValue.name"
                 :label="inputValue.name"
                 :items="basises"
-                @input="changeInput"
-              />
+                @input="changeInput" />
             </div>
             <div class="product-form_two" v-if="cost.cost">
               <div class="product-form_two-col">
                 <app-input
                   :disabled="true"
-                  :title="lang === 'Ru' ? 'Ширина' : 'Width'"
+                  :title="lang === 'Ru' ? 'Ширина' : 'Ені'"
                   :placeholder="inputValue.width"
                   :isUnit="true"
-                  :unit="inputValue.width_unit"
-                />
+                  :unit="inputValue.width_unit" />
               </div>
               <div class="product-form_two-col">
                 <app-input
                   :type="'number'"
-                  :title="lang === 'Ru' ? 'Длина' : 'Length'"
+                  :title="lang === 'Ru' ? 'Длина' : 'Ұзындығы'"
                   :placeholder="length1 ? length1 : 'Длина'"
                   :isUnit="true"
                   :unit="inputValue.width_unit"
-                  v-model="length1"
-                />
+                  v-model="length1" />
               </div>
             </div>
             <div class="product-form_two" v-if="cost.cost">
@@ -45,47 +44,43 @@
               <div class="product-form_two-col">
                 <app-input
                   :disabled="true"
-                  :title="lang === 'Ru' ? 'Вес' : 'Weight'"
+                  :title="lang === 'Ru' ? 'Вес' : 'Салмағы'"
                   :placeholder="inputValue.weight"
                   :isUnit="true"
-                  :unit="inputValue.weight_unit"
-                />
+                  :unit="inputValue.weight_unit" />
               </div>
             </div>
             <p v-if="err" style="color: red">
               {{
                 lang === "Ru"
                   ? `Вы не заполнили поля`
-                  : `You have not filled in the fields`
+                  : `Сіз өрістерді толтырмадыңыз`
               }}
             </p>
             <div class="product-form_btn">
               <div
                 v-if="$route.query.basis"
                 @click="handleChange"
-                class="product-form_btn-dark"
-              >
+                class="product-form_btn-dark">
                 <img src="@/assets/img/icons/buy.svg" alt="" />
 
-                {{ lang === "Ru" ? `Сохранить` : `Save` }}
+                {{ lang === "Ru" ? `Сохранить` : `Сақтау` }}
               </div>
               <div
                 @click="handleCart"
                 class="product-form_btn-dark"
-                v-else-if="cost.cost"
-              >
+                v-else-if="cost.cost">
                 <img src="@/assets/img/icons/buy.svg" alt="" />
 
-                {{ lang === "Ru" ? `Добавить в корзину` : `Add to Basket` }}
+                {{ lang === "Ru" ? `Добавить в корзину` : `Себетке қосу` }}
               </div>
               <div
                 @click="handleFavorite"
                 class="product-form_btn-white"
-                v-if="cost.cost"
-              >
+                v-if="cost.cost">
                 <img src="@/assets/img/icons/heart.svg" alt="" />
                 {{
-                  lang === "Ru" ? `Добавить в избранное` : `Add to favorites`
+                  lang === "Ru" ? `Добавить в избранное` : `Таңдаулыларға қосу`
                 }}
               </div>
               <span
@@ -95,9 +90,8 @@
                   display: block;
                   text-align: start;
                   font-size: 15px;
-                "
-              >
-                {{ lang === "Ru" ? `Добавлено в Корзину` : `Added to Cart` }}
+                ">
+                {{ lang === "Ru" ? `Добавлено в Корзину` : `Себетке қосылды` }}
               </span>
               <span
                 v-if="favoriteFalse"
@@ -106,20 +100,18 @@
                   display: block;
                   text-align: start;
                   font-size: 15px;
-                "
-              >
+                ">
                 {{
-                  lang === "Ru" ? `Добавлено в Избранные` : `Added to Favorites`
+                  lang === "Ru" ? `Добавлено в Избранные` : `Таңдаулыларға қосылды`
                 }}
               </span>
               <span
                 v-if="!token"
-                style="color: gray; display: block; text-align: start"
-              >
+                style="color: gray; display: block; text-align: start">
                 {{
                   lang === "Ru"
                     ? `Вы не авторизованы`
-                    : `You are not authorized`
+                    : `Сізге рұқсат жоқ`
                 }}
               </span>
             </div>
@@ -129,7 +121,7 @@
       <div class="product-info">
         <div class="product-info_description">
           <div class="product-info_title">
-            {{ lang === "Ru" ? `Описание товара` : `Product description` }}
+            {{ lang === "Ru" ? `Описание товара` : `Өнім Сипаттамасы` }}
           </div>
           <p class="product-info_text" v-if="inputValue.description">
             {{ inputValue.description.split("\r\n")[0] }}
@@ -142,7 +134,7 @@
         </div>
         <div class="product-info_delivery">
           <div class="product-info_title">
-            {{ lang === "Ru" ? `Доставка` : `Delivery` }}
+            {{ lang === "Ru" ? `Доставка` : `Доставка` }}
           </div>
           <p class="product-info_text">
             {{
@@ -152,11 +144,11 @@
             дизайнов от независимых дизайнеров, доступных для более чем 50
             различных продуктов. И мы подкрепляем каждую покупку нашей гарантией
             счастья. Посетите нашу справочную страницу для получения информации.`
-                : `Products are made to order, that is, we do not have a warehouse ready
-             to send goods. This allows us to offer a huge library
-             designs from independent designers available to over 50
-             various products. And we back every purchase with our guarantee.
-             happiness. Visit our help page for information.`
+                : `Өнімдер тапсырыспен жасалады, яғни бізде дайын қойма жоқ
+             тауарларды жіберу үшін. Бұл бізге үлкен кітапхананы ұсынуға мүмкіндік береді
+             тәуелсіз дизайнерлердің дизайны 50-ден астам қол жетімді
+             әртүрлі өнімдер. Және біз әрбір сатып алуды өз кепілдікпен қайтарамыз.
+             бақыт. Ақпарат алу үшін біздің анықтама бетіне кіріңіз.`
             }}
           </p>
         </div>
@@ -271,10 +263,10 @@ export default {
 
       api
         .changeCart(temp.id, {
-          length: this.length1,
+          length: parseInt(this.length1),
           quantity: this.quantity,
         })
-        .then(this.$router.push("/basket"));
+        .then(() => this.$router.push("/basket"));
     },
     handleCart() {
       this.currentCart.quantity = parseInt(this.quantity);

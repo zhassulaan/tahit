@@ -1,19 +1,32 @@
+<!-- @format -->
+
 <template>
   <div class="basket">
     <div class="basket__container">
       <div class="basket__inner">
-        <div class="basket-list">
+        <div class="basket-list" v-if="!success">
           <div class="basket-list__inner">
             <basket-card v-for="item in items" :key="item.id" :item="item" />
           </div>
           <div @click="$router.push('/catalog')" class="basket-list__btn">
-            Продолжить покупки
+            {{ $cookie.get('lang') === "Ru" ? 'Продолжить покупки' : 'Сатып алуды жалғастыру' }}
           </div>
         </div>
-        <total-payable @tab="tab = 2" v-if="tab === 1" :cart="cart" />
-        <cost-calculation :country="country" v-if="tab === 2" />
-        <thanks-for-order v-if="false" />
-        <edit-address-modal v-if="isShowModal" @close="isShowModal = false" />
+        <total-payable
+          @tab="tab = 2"
+          v-if="tab === 1 && !success"
+          :cart="cart" />
+        <cost-calculation
+          :country="country"
+          v-if="tab === 2 && !success"
+          @open="handleModal"
+          @submit="handleSuccess" />
+        <thanks-for-order v-if="success" />
+        <edit-address-modal
+          v-if="modal"
+          :id="id"
+          :type="'Добавить адрес'"
+          @close="handleModal" />
       </div>
     </div>
   </div>
@@ -29,11 +42,11 @@ export default {
     CostCalculation: () => import("@/components/basket/CostCalculation.vue"),
     ThanksForOrder: () => import("@/components/basket/ThanksForOrder.vue"),
     BasketCard: () => import("@/components/basket/BasketCard.vue"),
-    EditAddressModal: () => import("@/components/modals/EditAddressModal.vue"),
   },
   data() {
     return {
-      isShowModal: false,
+      modal: false,
+      success: false,
       country: "",
       items: "",
       id: "",
@@ -48,6 +61,14 @@ export default {
       this.id = res.id;
       this.country = res.user_country;
     });
+  },
+  methods: {
+    handleModal() {
+      this.modal = !this.modal;
+    },
+    handleSuccess() {
+      this.success = !this.success;
+    },
   },
 };
 </script>

@@ -1,8 +1,11 @@
 <template>
-  <section class="search">
+  <section
+    class="search"
+    v-if="prints.length > 0 || news.length > 0 || blogs.length > 0"
+  >
     <div class="search-prints" v-if="prints.length > 0">
       <h2 class="search-prints__text">
-        {{ $cookie.get("lang") === "Ru" ? "Принты" : "Prints" }}
+        {{ $cookie.get("lang") === "Ru" ? "Принты" : "Принттар" }}
       </h2>
       <div class="catalog-content_products">
         <ProductCard
@@ -14,7 +17,7 @@
     </div>
     <div class="search-news" v-if="news.length > 0">
       <h2 class="search-prints__text">
-        {{ $cookie.get("lang") === "Ru" ? "Новости" : "News" }}
+        {{ $cookie.get("lang") === "Ru" ? "Новости" : "Жаңалықтар" }}
       </h2>
       <div class="news-page__inner">
         <NewsCard v-for="n in news" :key="n.id" :item="n" />
@@ -22,7 +25,7 @@
     </div>
     <div class="search-blogs" v-if="blogs.length > 0">
       <h2 class="search-prints__text">
-        {{ $cookie.get("lang") === "Ru" ? "Блог" : "Blogs" }}
+        {{ $cookie.get("lang") === "Ru" ? "Блог" : "Блог" }}
       </h2>
       <div class="blog-content_posts">
         <BlogCard
@@ -33,6 +36,15 @@
         />
       </div>
     </div>
+  </section>
+  <section class="search" v-else>
+    <p class="empty">
+      {{
+        $cookie.get("lang") === "Ru"
+          ? "По запросу ничего не найдено..."
+          : "Сіздің іздеуіңіз бойынша нәтижелер табылмады..."
+      }}
+    </p>
   </section>
 </template>
 
@@ -265,6 +277,11 @@ input[type="number"] {
       height: rem(14);
     }
   }
+}
+
+.empty {
+  font-size: 24px;
+  text-align: center;
 }
 
 @media (max-width: 767px) {

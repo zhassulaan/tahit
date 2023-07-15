@@ -1,33 +1,37 @@
+<!-- @format -->
+
 <template>
   <div id="news" class="news">
     <div class="mobile-news__container">
-      <h2 class="news__header">{{ lang === "Ru" ? "Новости" : "News" }}</h2>
+      <h2 class="news__header">
+        {{ lang === "Ru" ? "Новости" : "Жаңалықтар" }}
+      </h2>
       <h1 class="news__subheader">
-        {{ lang === "Ru" ? "Узнайте первыми" : "Find out first" }}
+        {{ lang === "Ru" ? "Узнайте первыми" : "Бірінші болып көріңіз" }}
       </h1>
       <div class="news__slider">
         <router-link
           :to="{ name: 'FullNews', params: { id: item.id } }"
           class="news__one"
           v-for="item in news"
-          :key="item.id"
-        >
+          :key="item.id">
           <img :src="item.image" alt="qweqwe" class="mobile-news__img" />
           <p class="mobile-news__title">{{ item.name }}</p>
         </router-link>
       </div>
     </div>
     <div class="news__container">
-      <h2 class="news__header">{{ lang === "Ru" ? "Новости" : "News" }}</h2>
+      <h2 class="news__header">
+        {{ lang === "Ru" ? "Новости" : "Жаңалықтар" }}
+      </h2>
       <h1 class="news__subheader">
-        {{ lang === "Ru" ? "Узнайте первыми" : "Find out first" }}
+        {{ lang === "Ru" ? "Узнайте первыми" : "Бірінші болып көріңіз" }}
       </h1>
       <div class="news__collage">
         <div class="news__colWrapper">
           <router-link
             :to="{ name: 'FullNews', params: { id: news[0].id } }"
-            class="news__column"
-          >
+            class="news__column">
             <img class="newsImg" :src="news[0].image" alt="" />
             <div class="news__contentInner">
               <div class="news__content">
@@ -43,7 +47,7 @@
                   <router-link
                     :to="{ name: 'FullNews', params: { id: news[0].id } }"
                     >{{
-                      lang === "Ru" ? "Узнать больше" : "See more"
+                      lang === "Ru" ? "Узнать больше" : "Көбірек көру"
                     }}</router-link
                   >
                   <img src="../assets/news/stroke.png" alt="" />
@@ -54,8 +58,7 @@
           <div class="news__column">
             <router-link
               :to="{ name: 'FullNews', params: { id: news[1].id } }"
-              class="news__content"
-            >
+              class="news__content">
               <div class="news__contentInner">
                 <h3>{{ news[1].title }}</h3>
                 <p class="news__date">{{ news[1].updated_at.split("T")[0] }}</p>
@@ -66,7 +69,7 @@
                   <router-link
                     :to="{ name: 'FullNews', params: { id: news[1].id } }"
                     >{{
-                      lang === "Ru" ? "Узнать больше" : "See more"
+                      lang === "Ru" ? "Узнать больше" : "Көбірек көру"
                     }}</router-link
                   >
                   <img src="../assets/news/stroke.png" alt="" />
@@ -78,13 +81,11 @@
         </div>
         <router-link
           :to="{ name: 'FullNews', params: { id: news[2].id } }"
-          class="news__bigColumn"
-        >
+          class="news__bigColumn">
           <img
             class="bigColumn__newsImg"
             src="../assets/news/bigImg.png"
-            alt=""
-          />
+            alt="" />
           <div class="bigColumn__content">
             <h3>{{ news[2].title }}</h3>
             <p class="news__date">{{ news[2].updated_at.split("T")[0] }}</p>
@@ -93,9 +94,10 @@
             </p>
             <div class="readMore">
               <router-link
-                :to="{ name: 'FullNews', params: { id: news[2].id } }"
-              >
-                {{ lang === "Ru" ? "Узнать больше" : "See more" }}</router-link
+                :to="{ name: 'FullNews', params: { id: news[2].id } }">
+                {{
+                  lang === "Ru" ? "Узнать больше" : "Көбірек көру"
+                }}</router-link
               >
               <img src="../assets/news/stroke.png" alt="" />
             </div>

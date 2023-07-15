@@ -2,10 +2,10 @@
   <div id="blog" class="ourBlog">
     <div class="mobile-ourBlog__container">
       <h2 class="ourBlog__header">
-        {{ lang === "Ru" ? "Наш блог" : "Our Blog" }}
+        {{ lang === "Ru" ? "Наш блог" : "Біздің блог" }}
       </h2>
       <h1 class="ourBlog__interestng">
-        {{ lang === "Ru" ? "Интересное для вас" : "Interesting for you" }}
+        {{ lang === "Ru" ? "Интересное для вас" : "Сізге қызық" }}
       </h1>
       <div class="ourBlog__slider">
         <router-link
@@ -21,10 +21,10 @@
     </div>
     <div class="ourBlog__container">
       <h2 class="ourBlog__header">
-        {{ lang === "Ru" ? "Наш блог" : "Our Blog" }}
+        {{ lang === "Ru" ? "Наш блог" : "Біздің блог" }}
       </h2>
       <h1 class="ourBlog__interestng">
-        {{ lang === "Ru" ? "Интересное для вас" : "Interesting for you" }}
+        {{ lang === "Ru" ? "Интересное для вас" : "Сізге қызық" }}
       </h1>
       <div class="ourBlog__slider">
         <hooper :settings="hooperSettings">
@@ -33,7 +33,7 @@
               <img :src="blog.image" alt="" />
               <p>{{ blog.title }}</p>
               <router-link :to="{ name: 'FullBlog', params: { id: blog.id } }">
-                {{ lang === "Ru" ? "Узнать больше" : "See more" }}
+                {{ lang === "Ru" ? "Узнать больше" : "Көбірек көру" }}
               </router-link>
             </router-link>
           </slide>

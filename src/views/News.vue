@@ -1,7 +1,7 @@
 <template>
   <div class="news-page">
     <div class="container">
-      <h3 class="news-page__title">Новости</h3>
+      <h3 class="news-page__title">{{ $cookie.get("lang") === "Ru" ? "Новости" : "Жаңалықтар" }}</h3>
       <div class="news-page__inner">
         <NewsCard
           v-for="(n, index) in news"

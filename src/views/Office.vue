@@ -1,3 +1,5 @@
+<!-- @format -->
+
 <template>
   <div class="office">
     <h2>{{ header }}</h2>
@@ -90,6 +92,14 @@ export default {
   min-height: 80vh;
   padding: rem(20) 0;
   h2 {
+    font-family: "Playfair Display";
+    font-style: normal;
+    font-weight: 400;
+    font-size: rem(42);
+    line-height: rem(56);
+    text-align: center;
+    color: #182040;
+    margin-bottom: rem(50);
     // margin-top: rem(100);
   }
   &__container {

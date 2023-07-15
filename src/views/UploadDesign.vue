@@ -1,36 +1,35 @@
+<!-- @format -->
+
 <template>
   <div class="upload-design">
     <div v-if="modal">
       <div
         @click="errorMessage === '' ? $router.push('/') : (modal = false)"
-        class="edit-address"
-      ></div>
+        class="edit-address"></div>
       <div class="edit-address__content">
         <button
           @click="errorMessage === '' ? $router.push('/') : (modal = false)"
-          class="edit-address__close"
-        >
+          class="edit-address__close">
           <img src="@/assets/img/icons/close-modal.svg" alt="" />
         </button>
         <h3
           class="edit-address__title"
           style="text-align: center"
-          v-if="errorMessage"
-        >
+          v-if="errorMessage">
           {{ errorMessage }}
         </h3>
         <h3 class="edit-address__title" style="text-align: center" v-else>
           {{
             $cookie.get("lang") === "Ru"
               ? "Ваша заявка принята. Мы с вами свяжемся"
-              : "Your application is accepted. We will contact you"
+              : "Сіздің өтінішіңіз қабылданды. Біз сізге хабарласамыз"
           }}
         </h3>
       </div>
     </div>
     <div class="upload-design__container">
       <h3 class="upload-design__title">
-        {{ lang === "Ru" ? "Загрузите свой дизайн" : "Upload your design" }}
+        {{ lang === "Ru" ? "Загрузите свой дизайн" : "Дизайныңызды жүктеңіз" }}
       </h3>
       <div class="upload-design__inner">
         <div class="upload-design__create">
@@ -38,12 +37,12 @@
             <div class="upload-design__select upload-design__item">
               <h6 class="upload-design__select-title upload-design__item-title">
                 1.
-                {{ lang === "Ru" ? "Выберите Ваш файл" : "Choose your file" }}
+                {{ lang === "Ru" ? "Выберите Ваш файл" : "Файлыңызды таңдаңыз" }}
               </h6>
               <div class="upload-design__select-text">
                 <p>
                   {{
-                    lang === "Ru" ? "Допустимые форматы" : "Accepted formats"
+                    lang === "Ru" ? "Допустимые форматы" : "Қабылданған форматтар"
                   }}
 
                   : tif, jpg, png
@@ -52,7 +51,7 @@
                   {{
                     lang === "Ru"
                       ? "Файлы должны быть меньше 40МБ (рекомендуется 150 DPI)."
-                      : "Files must be less than 40MB (150 DPI recommended)."
+                      : "Файлдар 40 МБ-тан аз болуы керек (150 DPI ұсынылады)."
                   }}
                 </p>
               </div>
@@ -63,29 +62,27 @@
                   id="input__file"
                   @change="onFileChange"
                   class="input input__file"
-                  multiple
-                />
+                  multiple />
                 <label for="input__file">
-                  {{ lang === "Ru" ? "Выберите файл" : "Choose file" }}
+                  {{ lang === "Ru" ? "Выберите файл" : "Файлды таңдаңыз" }}
                 </label>
                 <span>{{
                   image
                     ? image.name
                     : lang === "Ru"
                     ? "Файл не выбран"
-                    : "File not selected"
+                    : "Файл таңдалмаған"
                 }}</span>
               </div>
             </div>
             <div class="upload-design__copyright upload-design__item">
               <h6
-                class="upload-design__copyright-title upload-design__item-title"
-              >
+                class="upload-design__copyright-title upload-design__item-title">
                 2.
                 {{
                   lang === "Ru"
                     ? "Подтвердите авторские права"
-                    : "Confirm copyright"
+                    : "Авторлық құқықты растау"
                 }}
               </h6>
               <div class="upload-design__copyright-text">
@@ -93,7 +90,7 @@
                   {{
                     lang === "Ru"
                       ? "Помогите нам уважать права художников и других творческих людей:"
-                      : "Help us respect the rights of artists and other creative                   of people:"
+                      : "Бізге суретшілердің және басқа шығармашылық адамдардың құқықтарын құрметтеуге көмектесіңіз:"
                   }}
                 </p>
                 <p>
@@ -103,10 +100,10 @@
                   товарными знаками или иным образом защищенных без права или
                   разрешения, является нарушением Условий обслуживания
                   Spoonflower и международного права.`
-                      : `Playing copyrighted material
-                   trademarked or otherwise protected without right or
-                   permission is a violation of the Terms of Service
-                   Spoonflower and international law.`
+                      : `Авторлық құқықпен қорғалған материалды ойнату
+                   тауар белгісімен немесе құқықсыз басқа жолмен қорғалған немесе
+                   рұқсат қызмет көрсету шарттарын бұзу болып табылады
+                   Қасық гүл және халықаралық құқық.`
                   }}
                 </p>
                 <p>
@@ -115,22 +112,20 @@
                       ? `Загрузка контента, нарушающего эти принципы, может привести к
                   приостановке действия вашей учетной записи и удержанию любых
                   комиссий.`
-                      : `Uploading content that violates these guidelines may result in
-                   suspension of your account and hold any
-                   commissions.`
+                      : `Осы нұсқауларды бұзатын мазмұнды жүктеп салу мыналарға әкелуі мүмкін
+                   тіркелгіңізді тоқтата тұру және кез келген ұстау
+                   комиссиялар.`
                   }}
                 </p>
                 <p>
                   {{
                     lang === "Ru"
                       ? `Недопустимый контент может включать ссылки или изображения
-                  знаменитостей, вымышленных персонажей, дизайнеров, компаний,
-                  компаний, фильмов, телешоу, групп, спортивных команд, книг,
+                  знаменитостей, вымышленных персонажей, дизайнеров, компаний, фильмов, телешоу, групп, спортивных команд, книг,
                   названий продуктов и т.д.`
-                      : `Invalid content may include links or images
-                   celebrities, fictional characters, designers, companies,
-                   companies, movies, TV shows, bands, sports teams, books,
-                   product names, etc.`
+                      : `Жарамсыз мазмұнда сілтемелер немесе суреттер болуы мүмкін
+                   атақты адамдар, фантастикалық кейіпкерлер, дизайнерлер, компаниялар, фильмдер, телешоулар, топтар, спорт командалары, кітаптар,
+                   өнім атаулары және т.б.`
                   }}
                 </p>
               </div>
@@ -139,14 +134,12 @@
                   class="input__checkbox"
                   id="checkbox"
                   type="checkbox"
-                  v-model="isHaveRules"
-                />
+                  v-model="isHaveRules" />
                 <label
                   style="cursor: pointer"
                   for="checkbox"
                   class="input__check"
-                  :class="{ active: isHaveRules }"
-                >
+                  :class="{ active: isHaveRules }">
                   <span></span>
                 </label>
                 <label class="input__checkbox-label" for="checkbox">
@@ -155,45 +148,43 @@
                       ? `У меня есть права или разрешение на использование этого
                   контента, и я согласен с вышеизложенными условиями и Условиями
                   обслуживания`
-                      : `I have the rights or permission to use this
-                   content, and I agree to the above terms and conditions
-                   service`
+                      : `Мұны пайдалануға құқығым немесе рұқсатым бар
+                   мазмұны және мен жоғарыда аталған шарттармен келісемін
+                   қызмет көрсету`
                   }}
                 </label>
               </div>
             </div>
             <div class="upload-design__additional upload-design__item">
               <h6
-                class="upload-design__additional-title upload-design__item-title"
-              >
+                class="upload-design__additional-title upload-design__item-title">
                 {{
                   lang === "Ru"
                     ? `Дополнительная информация`
-                    : `Additional information`
+                    : `Қосымша ақпарат`
                 }}
               </h6>
               <textarea
                 v-model="comment"
-                class="upload-design__additional-textarea"
-              ></textarea>
+                class="upload-design__additional-textarea"></textarea>
             </div>
             <div class="upload-design__file upload-design__item">
               <h6 class="upload-design__file-title upload-design__item-title">
                 {{
                   lang === "Ru"
                     ? `3. Отправить Ваши файлы`
-                    : `3. Upload your files`
+                    : `3. Файлдарыңызды жіберіңіз`
                 }}
               </h6>
               <label @click="handleUpload" class="upload-design__file-btn">
-                {{ lang === "Ru" ? `Отправить файл` : `Upload file` }}
+                {{ lang === "Ru" ? `Отправить файл` : `Файлды жіберу` }}
               </label>
             </div>
           </div>
         </div>
         <div class="upload-design__can">
           <h6 class="upload-design__can-title">
-            {{ lang === "Ru" ? `На Tahit вы можете` : `In Tahit you can` }}
+            {{ lang === "Ru" ? `На Tahit вы можете` : `Тахитта мүмкін` }}
           </h6>
           <ul class="upload-design__can-list">
             <li class="upload-design__can-item">
@@ -201,17 +192,8 @@
                 lang === "Ru"
                   ? `Превратите произведение искусства в ткань, обои или предметы
               интерьера — минимальный заказ не требуется`
-                  : `Turn a piece of art into fabric, wallpaper or objects
-               interior - no minimum order required`
-              }}
-            </li>
-            <li class="upload-design__can-item">
-              {{
-                lang === "Ru"
-                  ? `Создавайте уникальные сувениры на память: от кухонных полотенец,
-              написанных от руки, до гирлянд из семейных фотографий.`
-                  : `Create unique keepsakes: from kitchen towels,
-               handwritten to garlands of family photos.`
+                  : `Өнер туындысын матаға, тұсқағазға немесе заттарға айналдырыңыз
+               интерьер - ең аз тапсырыс қажет емес`
               }}
             </li>
             <li class="upload-design__can-item">
@@ -219,8 +201,8 @@
                 lang === "Ru"
                   ? `Зарабатывайте деньги, создавая узоры, выставляя свои работы на
               продажу на торговой площадке.`
-                  : `Earn money creating patterns by exhibiting your work on
-               sale on the marketplace.`
+                  : `Жұмысыңызды көрсету арқылы үлгілерді жасау арқылы ақша табыңыз
+               базарда сату.`
               }}
             </li>
             <li class="upload-design__can-item">
@@ -228,8 +210,8 @@
                 lang === "Ru"
                   ? `Участвуйте в еженедельных конкурсах дизайнеров, чтобы
               продемонстрировать миру свои таланты и выиграть призы.`
-                  : `Participate in weekly design competitions to
-               show the world your talents and win prizes.`
+                  : `Апта сайынғы дизайн байқауларына қатысыңыз
+               әлемге таланттарыңызды көрсетіңіз және жүлделер ұтып алыңыз.`
               }}
             </li>
             <li class="upload-design__can-item">
@@ -237,8 +219,8 @@
                 lang === "Ru"
                   ? `Поддерживайте устойчивое производство и экологически чистые
               продукты`
-                  : `Support sustainable production and environmentally friendly
-               products`
+                  : `Тұрақты өндірісті қолдау және экологиялық таза
+               өнімдер`
               }}
             </li>
             <li class="upload-design__can-item">
@@ -246,8 +228,8 @@
                 lang === "Ru"
                   ? `Займитесь дизайном или начните свой бизнес с нашей полезной
               библиотекой ресурсов — нет предела возможностям!`
-                  : `Design or start your business with our useful
-               resource library - the possibilities are endless!`
+                  : `Біздің пайдалылығымызбен бизнесіңізді жобалаңыз немесе бастаңыз
+               ресурстар кітапханасы - мүмкіндіктер шексіз!`
               }}
             </li>
           </ul>
@@ -277,6 +259,11 @@ export default {
       if (!files.length) return;
       this.image = files[0];
       console.log(files[0]);
+      if (files[0].size > 90000000) {
+        this.errorMessage = this.lang === 'Ru' ? "Файл слишком большой" : 'Файл 100 мб-тан аз болуы керек';
+        this.modal = true;
+        this.image = "";
+      }
     },
     handleUpload() {
       if (this.$cookie.get("token")) {
@@ -286,7 +273,15 @@ export default {
         api.UploadDesign(formData).then((res) => {
           if (res.response) {
             if (res.response.status === 403) {
-              this.errorMessage = res.response.data.detail;
+              this.errorMessage =
+                this.$cookie.get("lang") === "Ru"
+                  ? "Данная функция доступна только для дизайнеров"
+                  : "Бұл мүмкіндік тек дизайнерлерге ғана қолжетімді.";
+            } else {
+              this.errorMessage =
+                this.$cookie.get("lang") === "Ru"
+                  ? "Файл должен быть меньше 100мб"
+                  : "Файл 100 мб-тан аз болуы керек";
             }
           }
           this.modal = true;
@@ -295,7 +290,7 @@ export default {
         alert(
           this.lang === "Ru"
             ? "Необходимо зарегистрироваться"
-            : "Login required"
+            : "Тіркелу қажет"
         );
       }
     },

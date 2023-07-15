@@ -2,7 +2,7 @@
   <div class="may-like">
     <div class="container">
       <h3 class="may-like__title">
-        {{ lang === "Ru" ? "Вам также может понравиться" : "May also like" }}
+        {{ lang === "Ru" ? "Вам также может понравиться" : "Сізге ұнауы мүмкін" }}
       </h3>
       <div class="may-like__slider">
         <swiper ref="swiperSlider" :options="sliderOptions">
